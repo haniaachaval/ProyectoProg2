@@ -75,6 +75,50 @@ let celulares = {
             color: "white",
         },
         
+        {
+            marca: "motorola",
+            modelo: "Moto G200 5G",
+            estado: "nuevo",
+            color: "blue",
+        },
+        
+        {
+            marca: "motorola",
+            modelo: "Moto G200 5G",
+            estado: "usado",
+            color: "blue",
+        },
+
+        {
+            marca: "motorola",
+            modelo: "Moto G41",
+            estado: "nuevo",
+            color: "black",
+        },
+
+        {
+            marca: "motorola",
+            modelo: "Moto G41",
+            estado: "usado",
+            color: "black",
+        },
+
+        {
+            marca: "motorola",
+            modelo: "Moto edge 20 pro",
+            estado: "nuevo",
+            color: "blue",
+        },
+
+        {
+            marca: "motorola",
+            modelo: "Moto edge 20 pro",
+            estado: "usado",
+            color: "white",
+        },
+        
+        
+        
       
     ]
 }
