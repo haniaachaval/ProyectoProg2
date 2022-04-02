@@ -38,4 +38,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//Creo variable que contiene mis ruta
+let rutasMarcas = require("./routes/marca.js");
+//avisar quien se va a ocupar de responder
+app.use('/marca', rutasMarcas);
+ 
+let rutasColor = require("./routes/color.js");
+//avisar quien se va a ocupar de responder
+app.use('/color', rutasColor);
 module.exports = app;
+
+
