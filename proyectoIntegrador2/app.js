@@ -4,9 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -19,8 +16,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+let indexRouter = require ('./routes/index');
+
+let estadoRouter = require ('./routes/estado');
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+app.use('/estado', estadoRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,6 +51,7 @@ app.use('/marca', rutasMarcas);
 let rutasColor = require("./routes/color.js");
 //avisar quien se va a ocupar de responder
 app.use('/color', rutasColor);
+
 module.exports = app;
 
 

@@ -4,8 +4,8 @@ const router = express.Router();
 
 const celulares = require('../db/celulares.js')
 
-// cuando tengamos controladores
-const controlador = require('../controllers/autoController')
-router.get('/', controlador.libros)
+const controlador = require ('../controllers/indexController');
+
+router.get('/', controlador.lista);
 
 
