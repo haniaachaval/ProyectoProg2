@@ -18,17 +18,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //se estan requiriendo los modulos propios que estamos exportnado en los otros archivos
 const indexRouter = require('./routes/index');
-const estadoRouter = require('./routes/estado');
-const modeloRouter = require('./routes/modelo');
-const marcaRouter = require('./routes/marca');
-const colorRouter = require('./routes/color');
+const productoRouter = require('./routes/producto');
+const usuarioRouter = require('./routes/usuario');
 
 //estos son los prefijos
 app.use('/', indexRouter);
-app.use('/estado', estadoRouter);
-app.use('/modelo', modeloRouter);
-app.use('/marca', marcaRouter);
-app.use('/color', colorRouter);
+app.use('/producto', productoRouter);
+app.use('/usuario', usuarioRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,9 +1,10 @@
 const express = require('express'); //nos va a perrmitir modularizar el sistema de ruteo
 const router = express.Router();
-const modeloController = require("../controllers/modeloController")
+
+const productoController = require("../controllers/productoController")
 
 //ruta que muestra los modelos
-router.get ('/', modeloController.modelo );
+router.get ('/', productoController.modelo );
 
 
 //exportamos el contenido del router para hacerlo visible y poder requerirlo en los otros archivos
