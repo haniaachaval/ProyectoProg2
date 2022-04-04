@@ -3,7 +3,7 @@ const router = express.Router();
 
 const controlador = require ('../controllers/estadoController');
 
-router.get('/estado', controlador.estado);
+router.get('/', controlador.estado);
 
 module.exports = router;
 
