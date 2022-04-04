@@ -20,13 +20,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 const indexRouter = require('./routes/index');
 const estadoRouter = require('./routes/estado');
 const modeloRouter = require('./routes/modelo');
+const marcaRouter = require('./routes/marca');
+const colorRouter = require('./routes/color');
 
 //estos son los prefijos
 app.use('/', indexRouter);
 app.use('/estado', estadoRouter);
 app.use('/modelo', modeloRouter);
-app.use('/marcas', modeloRouter);
-app.use('/color', modeloRouter);
+app.use('/marca', marcaRouter);
+app.use('/color', colorRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,12 +50,8 @@ app.use(function(err, req, res, next) {
 let rutasMarcas = require("./routes/marca.js");
 //avisar quien se va a ocupar de responder
 app.use('/marca', rutasMarcas);
- 
-let rutasColor = require("./routes/color.js");
-//avisar quien se va a ocupar de responder
-app.use('/color', rutasColor);
 
- 
+let rutasColor = require("./routes/color.js");
 
 module.exports = app;
 

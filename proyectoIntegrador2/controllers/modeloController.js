@@ -1,6 +1,8 @@
+const celulares = require("../db/celulares");
+
 const modeloController = {
     modelo: function(req,res){
-        return res.send("todos los modelos")
+        return res.render("modelo",{modelo:celulares.lista.modelo});
     }
 }
 
