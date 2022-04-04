@@ -1,6 +1,6 @@
 let estadoController ={
     estado: function(req,res){
-        res.send ('Celulares nuevos o usados');
+        res.render ('estado');
     }
 }
 

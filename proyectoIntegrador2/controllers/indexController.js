@@ -1,6 +1,6 @@
 let indexController = {
     lista: function(req,res){
-        res.send ('Lista de celulares');
+        res.render ('index');
     }
 }
 

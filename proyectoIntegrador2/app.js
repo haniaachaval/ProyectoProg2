@@ -54,9 +54,6 @@ let rutasColor = require("./routes/color.js");
 app.use('/color', rutasColor);
 
  
-let rutasMarcas = require("./routes/marca.js");
-//avisar quien se va a ocupar de responder
-app.use('/marca', rutasMarcas);
 
 module.exports = app;
 
