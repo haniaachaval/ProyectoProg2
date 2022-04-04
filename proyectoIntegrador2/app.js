@@ -48,16 +48,11 @@ app.use(function(err, req, res, next) {
 let rutasMarcas = require("./routes/marca.js");
 //avisar quien se va a ocupar de responder
 app.use('/marca', rutasMarcas);
- 
+
 let rutasColor = require("./routes/color.js");
 //avisar quien se va a ocupar de responder
 app.use('/color', rutasColor);
 
-<<<<<<< HEAD
-=======
- 
-
->>>>>>> edb715b03cfb78ee70cd89c2f7607d5afc4efc35
 module.exports = app;
 
 
