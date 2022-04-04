@@ -1,5 +1,5 @@
 let express = require ('express')
-let Router = express.Router();
+let router = express.Router();
  
 router.get ("/color/:idColor", function(req,res){
     res.send('Elegiste los celulares de color' + req.params.idColor)

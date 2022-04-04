@@ -8,4 +8,5 @@ const controlador = require ('../controllers/indexController');
 
 router.get('/', controlador.lista);
 
+module.exports = router;
 
