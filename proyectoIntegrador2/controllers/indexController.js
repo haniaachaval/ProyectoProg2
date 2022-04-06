@@ -1,8 +1,12 @@
-let indexController = {
-    lista: function(req,res){
-        res.render ('index');
-    }
+let db = require("../db/celulares")
+
+const indexController = {
+    home : function(req,res){
+        res.render ('index')
+    }, 
+    detalleProducto : function(req,res){
+        res.render ('product', { celulares: lista });
+        }
 }
+module.exports = indexController
 
-
-module.exports = indexController; 
