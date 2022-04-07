@@ -1,159 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
+	<body>
+		<!-- donde queremos que aparezca el contenido de las vistas parciales -->
+		<%- include('partials/head') %> 
 
-<%- include('partials/head') %> 
+		<%if(logueado==true){%>
+			<%- include("partials/headerLogueado")%>
+		<%}else{%>
+			<%- include("partials/headerDeslogueado")%>
+		<%}%>
 
-<%if(logueado==true){%>
-	<%- include("partials/headerLogueado")%>
-<%}else{%>
-	<%- include("partials/headerDeslogueado")%>
-<%}%>
+		<!-- Banner -->
+		<div class="banner">
+			<img src="/images/img-home-banner.jpg"alt="Banner de ofertas">
+		</div>
 
-	<!-- Banner -->
-	<div class="banner">
-		<img src="/stylesheets/images/img-home-banner.jpg"alt="Banner de ofertas">
-	</div>
-	<!-- /Banner -->
-
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Novedades</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/stylesheets/images/products/default-image.png" alt="celular">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/stylesheets/images/products/default-image.png"  alt="celular 2">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Novedades</h2>
+				</div>
+				<!-- Show the "ultimos" products -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/samsungS10.jpg" alt="celular">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/samsungS10.jpg"  alt="celular 2">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
+									delectus ex</p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/samsungS10.jpg"  alt="celular 3">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
 								delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/stylesheets/images/products/default-image.png"  alt="celular 3">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-								delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="/stylesheets/images/products/default-image.png"  alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-								delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/samsungS10.jpg"  alt="cafetera moulinex">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
+									delectus ex</p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /Novedades -->
-	<!-- Más comentados -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Más comentados</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
+		<!-- /Novedades -->
+		<!-- Más comentados -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Más comentados</h2>
+				</div>
+				<!-- Show the "ultimos" products -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/img-cafetera-moulinex.jpg" alt="cafetera moulinex">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/img-cafetera-moulinex.jpg" alt="cafetera moulinex">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/img-cafetera-moulinex.jpg" alt="cafetera moulinex">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product.html">
+							<figure class="product-box_image">
+								<img src="/images/products/img-cafetera-moulinex.jpg" alt="cafetera moulinex">
+							</figure>
+							<article class="product-box_data">
+								<h2>Nombre del producto</h2>
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /Más comentados -->
+		<!-- /Más comentados -->
 
 
-	<!-- footer -->
-	<%- include('./partials/footer')  %> 
-	<!-- /footer -->
-</body>	
+		<!-- footer -->
+		<%- include('./partials/footer')  %> 
+		<!-- /footer -->
+	</body>	
 </html>
