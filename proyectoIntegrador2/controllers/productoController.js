@@ -7,6 +7,9 @@ const celulares = require("../db/celulares");
 
 
 const productoController = {
+    agregarProducto : function(req,res){
+        res.render ('product-add', {logueado : false});
+   },
     home : function(req,res){
         res.render ('producto',{logueado:false})
     }, 
@@ -16,9 +19,9 @@ const productoController = {
     }, 
 
     detalleProducto : function(req,res){
-        res.render ('producto', { celulares: celulares.lista });
-        }
-    
+        res.render ('producto', { celulares: celulares.lista, logueado:false });
+    }
+   
 }
 
 module.exports = productoController

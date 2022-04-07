@@ -6,6 +6,7 @@ const productoController = require("../controllers/productoController")
 //ruta que muestra los modelos
 router.get ('/', productoController.home );
 router.get ('/:idProducto', productoController.detalleProducto );
+router.get ('/add', productoController.agregarProducto );
 
 
 
