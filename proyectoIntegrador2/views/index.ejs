@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
 
-<%- include('./partials/head') %> 
+<%- include('partials/head') %> 
+<%if(logueado==true){%>
+	<%- include("partials/headerLogueado")%>
+<%}else{%>
+	<%- include("partials/headerDeslogueado")%>
+<%}%>
 
-
-	<!-- /Header -->
-	
 	<!-- Banner -->
 	<div class="banner">
 		<img src="images/img-home-banner.jpg" alt="Banner de ofertas">
