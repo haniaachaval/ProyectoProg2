@@ -1,7 +1,7 @@
-const express = require('express'); //nos va a perrmitir modularizar el sistema de ruteo
+const express = require('express'); //nos va a permitir modularizar el sistema de ruteo
 const router = express.Router();
 
-const productoController = require("../controllers/indexController")
+const productoController = require("../controllers/productoController")
 
 //ruta que muestra los modelos
 router.get ('/', productoController.home );
