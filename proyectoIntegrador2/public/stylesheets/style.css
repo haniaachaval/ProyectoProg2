@@ -10,3 +10,11 @@ a {
 .prueba{
   background-color: aqua;
 }
+
+.formLogin{
+  display:flex;
+}
+
+.inputLogin{
+  margin-bottom: 1px;
+}

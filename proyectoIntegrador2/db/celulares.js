@@ -5,6 +5,7 @@ let celulares = {
             modelo: "iphone 11",
             estado: "nuevo",
             color: "black",
+            
         },
         {
             marca: "iphone",
