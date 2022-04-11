@@ -1,7 +1,7 @@
 let celulares = {
     lista: [
         {
-            marca: "iphone",
+            marca: "Apple",
             modelo: "iphone 11",
             estado: "nuevo",
             color: "black",
@@ -9,14 +9,14 @@ let celulares = {
             
         },
         {
-            marca: "iphone",
+            marca: "Apple",
             modelo: "iphone 11",
             estado: "usado",
             color: "white",
             id: "2"
         },
         {
-            marca: "iphone",
+            marca: "Apple",
             modelo: "iphone 8 plus",
             estado: "nuevo",
             color: "white",
@@ -24,21 +24,21 @@ let celulares = {
         },
         
         {
-            marca: "iphone",
+            marca: "Apple",
             modelo: "iphone 8 plus",
             estado: "usado",
             color: "black",
             id: "4"
         },
         {
-            marca: "iphone",
+            marca: "Apple",
             modelo: "iphone X",
             estado: "usado",
             color: "",
             id: "5"
         },
         {
-            marca: "iphone",
+            marca: "Apple",
             modelo: "iphone X",
             estado: "usado",
             color: "blue",

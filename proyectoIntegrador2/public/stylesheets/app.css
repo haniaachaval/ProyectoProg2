@@ -67,7 +67,6 @@ hr {
 
 /*====== Main Header ======*/
 .main-header {
-  padding: 15px 0;
   background-color: #3A5ADC;
 }
 
@@ -153,11 +152,11 @@ hr {
 
 
 /*====== Banner ======*/
-.banner {
+.banner img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
+  height: 350px;
 }
 
 
