@@ -81,14 +81,6 @@ let celulares = {
             id: "11"
         },
         {
-            marca: "samsung",
-            modelo: "samsung galaxy S20",
-            estado: "usado",
-            color: "white",
-            id: "12"
-        },
-        
-        {
             marca: "motorola",
             modelo: "Moto G200 5G",
             estado: "nuevo",
@@ -103,15 +95,6 @@ let celulares = {
             color: "blue",
             id: "14"
         },
-
-        {
-            marca: "motorola",
-            modelo: "Moto G41",
-            estado: "nuevo",
-            color: "black",
-            id: "15"
-        },
-
         {
             marca: "motorola",
             modelo: "Moto G41",
