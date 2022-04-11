@@ -29,64 +29,16 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="profile.html">Ricky Martin: </a> </strong>
-								Rápido e eficaz.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Don Omar: </a> </strong>
-									¡La mejor tienda, excelente servicio!</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Anitta: </a> </strong>
-									Buenas tardes, gran servicio lo super recomiendo. Compre mi Iphone  y todo está funcionando a la perfección. excelentes empleados.
-									</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Chayanne: </a> </strong>
-									¡Gran servicio! Muy proactivo y honesto.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Marc Anthony: </a> </strong>
-									Mucha variedad de celulares</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Carlos vives: </a> </strong>
-									Muy linda la tienda, super completa y con empleados muy amables</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="profile.html">Shakira: </a> </strong>
-									Compre un Samsung y funciono todo a la perfección. Lo recomiendo!!!!</p>
-							</div>
-						</article>
-
+						<% for( let i = 0; i < comentario.length; i++ ) { %>
+							<article>
+								<img src="https://via.placeholder.com/35" alt="">
+                                <div class="data">
+                                <p class="user">
+                                <strong> <a href="/usuario"><%= comentario[i].usuario %></a> </strong>
+                                <%= comentario[i].texto %></p>
+                                </div>
+                            </article>
+                        <% } %>
 					</section>
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
