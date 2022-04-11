@@ -67,7 +67,7 @@ hr {
 
 /*====== Main Header ======*/
 .main-header {
-  background-color: #3A5ADC;
+  background-color: #0054ad;
 }
 
 .main-header_home-link,
@@ -164,12 +164,14 @@ hr {
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
+  background-color:#03264C;
+  margin-top: 50px;
 }
 
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: white;
 }
 
 .product-box {

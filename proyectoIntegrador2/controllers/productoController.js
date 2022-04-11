@@ -6,7 +6,7 @@ const productoController = {
         res.render ('product-add', {logueado : false});
 },
     detalleProducto : function(req,res){
-        res.render ('producto', { celulares: celulares.lista, logueado:false, comentario: comentario.lista });
+        res.render ('producto', { celulares: celulares.lista, logueado:true, comentario: comentario.lista });
 }
 }
 
