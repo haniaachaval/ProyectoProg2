@@ -16,7 +16,6 @@ let usuarioController ={
             return res.render ('profile-edit',{ usuarios: usuarios.lista});
         },
 
-    
 }
 
 

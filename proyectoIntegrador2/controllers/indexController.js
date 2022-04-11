@@ -1,5 +1,5 @@
 let db = require("../db/celulares")
-let usuarios = require ("../db/usuario")
+let usuario = require ("../db/usuario")
 
 const indexController = {
     home : function(req,res){
@@ -7,7 +7,7 @@ const indexController = {
     }, 
 
     homeLogueado: function(req,res){
-        res.render ('index',{logueado:true,celus: db.lista, usuarios:usuarios.lista})
+        res.render ('index',{logueado:true,celus: db.lista, usuarios : usuario.lista})
     }, 
 }
 
