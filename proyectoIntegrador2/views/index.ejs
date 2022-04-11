@@ -4,11 +4,9 @@
 		<!-- donde queremos que aparezca el contenido de las vistas parciales -->
 		<%- include('partials/head') %> 
 
-		<%if(logueado==true){%>
-			<%- include("partials/headerLogueado")%>
-		<%}else{%>
-			<%- include("partials/headerDeslogueado")%>
-		<%}%>
+		
+		<%- include("partials/headerDeslogueado")%>
+
 
 		<!-- Banner -->
 		<div class="banner">

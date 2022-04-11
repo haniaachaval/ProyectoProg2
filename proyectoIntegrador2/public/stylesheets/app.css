@@ -169,8 +169,8 @@ hr {
 }
 
 .products-title {
-  font-size: 2.4em;
-  font-weight: 400;
+  font-size: 3.5em;
+  font-weight: bold;
   color: white;
 }
 
@@ -526,5 +526,12 @@ textarea.form-input {
   .footer-data {
     width: 95%;
     margin: auto;
+  }
+
+  .subtitulo{
+    color: #dcdcdc;
+    font-weight: 200;
+    font-size: 20px;
+    font-style: oblique;
   }
 }

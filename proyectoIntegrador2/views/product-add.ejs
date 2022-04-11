@@ -4,7 +4,7 @@
 
 <%- include('partials/head') %> 
 
-<%- include('partials/headerLogueado') %> 
+<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -22,11 +22,12 @@
 				<div >
 					<input type="text"   placeholder="Descripcion del producto">
 				</div>
-
+			
 				<div>
 					<input type="file"  placeholder="imagen">
-				
+			
 				</div>
+			
 				<div>
 					<input type="date"  placeholder="Fecha de carga">
 				
