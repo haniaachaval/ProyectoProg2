@@ -7,31 +7,5 @@ a {
   color: #00B7FF;
 }
 
-.prueba{
-  background-color: aqua;
-}
 
-.formLogin{
-  display:flex;
-}
 
-.inputLogin{
-  margin-bottom: 1px;
-}
-
-.register{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-.registro{
-  display: block;
-}
-
-.formRegistro{
-  display: block;
-}
-
-.inputs{
-  margin-bottom: 10px;
-}

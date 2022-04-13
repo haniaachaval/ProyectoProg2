@@ -164,7 +164,7 @@ hr {
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
-  background-color:#03264C;
+  background-color:#0054ad;
   margin-top: 50px;
 }
 
@@ -461,7 +461,8 @@ textarea.form-input {
 }
 
 .foto-perfil{
-  border-radius: 50%;
+  border-radius: 60%;
+  margin-top: 15px;
 }
 
 .main-title{
@@ -538,4 +539,79 @@ textarea.form-input {
     color: white;
     font-weight: 100;
   }
+}
+
+.formLogin{
+  display:flex;
+}
+
+
+.register{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.registro{
+  display: block;
+}
+
+.formRegistro{
+  display: flex;
+}
+
+.inputs{
+  margin-bottom: 5px;
+  margin-left: 0.5cm;
+}
+
+.tituloPerfil {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color:white;
+  
+}
+
+.editarPerfil{
+  color:white; 
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.registroUsuario{
+  color:white;
+  font-size: 2.5em;
+}
+
+.registrado{
+  color:white;
+  font-size: 20px;
+}
+
+.confirmar{
+  color:white;
+  font-size: 20px;
+  margin-left: 0.5cm;
+}
+
+.checkbox{
+  margin-bottom: 5px;
+  margin-left: 0.5cm;
+  width: 18px;
+  height:18px;
+}
+
+.recordarme{
+  color: white; 
+  font-size: 18px;
+}
+
+.perfil{
+  color:white;
+}
+
+.email{
+  color:white;
+  font-style: italic;
+  font-size: 20px;
 }

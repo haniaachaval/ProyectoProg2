@@ -13,18 +13,24 @@
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%=usuarios[0].usuario%>
+					<h1 class="tituloPerfil"> <%=usuarios[0].usuario%>
 						<a href="/usuario/editar">
-							<i class="fas fa-cog">Editar perfil</i>
+							<i class="editarPerfil">Editar perfil</i>
 						</a>
 					</h1>
+					
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 				</div>
+
+				<div class="d-flex align-items-center ">
+					<h1 class="email"> <%=usuarios[0].email%>
+				</div>
+
 				<div>
-					<ul class="">
-						<li>8 productos</li>
-						<li>200 seguidores</li>
-						<li>300 comentarios</li>
+					<ul>
+						<li class="perfil">8 productos</li>
+						<li class="perfil">200 seguidores</li>
+						<li class="perfil">300 comentarios</li>
 					</ul>
 				</div>
 			</div>
