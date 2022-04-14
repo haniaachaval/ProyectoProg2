@@ -540,9 +540,82 @@ textarea.form-input {
     font-weight: 100;
   }
 }
+/*FORMULARIO LOGIN */
+.body {
+    background: linear-gradient(45deg,  rgba(66, 183, 245,0.8) 0%,rgba(66, 245, 189,0.4) 100%);
+    color: gray;
+    font-family: base-font-family;
+    font-size: base-font-size;
+    line-height: base-line-height;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
 .formLogin{
-  display:flex;
+    z-index: 15;
+    position: relative;
+    background: white;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(black, .1);
+    box-sizing: border-box;
+    margin: 100px auto 10px;
+    overflow: hidden;
+  }
+.inputs{
+    outline: none;
+      display: block;
+      background: rgba(black, 0.1);
+      width: 100%;
+      border: 0;
+      border-radius: 4px;
+      box-sizing: border-box;
+      padding: 12px 20px;
+      color: gray;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: semibold;
+      line-height: inherit;
+      transition: 0.3s ease;
+}
+.botonlogin{
+  outline: none;
+  background: accent;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: grey;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: semibold;
+  line-height: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.login{
+  align-items: center;
+}
+.recordarme{
+  display: inline-block;
+  width: auto;
+  margin: 0 10px 0 0;
+}
+.casilla{
+  display: block;
+  margin: 0 0 10px;
+  color: gray;
+  font-size: 12px;
+  font-weight: semibold;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+.submit{
+  width:110px;
+    top:90px;
+    left:120px;
+    cursor:pointer;
 }
 
 
@@ -614,4 +687,7 @@ textarea.form-input {
   color:white;
   font-style: italic;
   font-size: 20px;
+}
+.casilla{
+  width: 80%;
 }

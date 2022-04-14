@@ -5,31 +5,34 @@
 <%- include('partials/head') %> 
 
 <%- include('partials/headerDeslogueado') %> 
-
+<body class="body">
 	<!-- Novedades -->
 	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
+		<!-- <div class="row"> -->
+			<div class="login">
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			
 			
-	<section class:"formLogin">
-		<form method="GET">
+	<section >
+		<form class="formLogin" method="GET">
 
-			<div >
+			<div class=" casilla">
 				<input type="email" placeholder="Email" class="inputs">
 			</div>
 		
-			<div >
+			<div class=" casilla">
 				<input type="password" placeholder="Contraseña" class="inputs">
 				
 			</div>
-			<div>
+
+			<div class=" casilla">
 				<input type="checkbox" class="checkbox">
 			<label for="recordame" class="recordarme">recordarme</label>
+
 			</div>
-			<button type="submit"><a href="/usuario">Confirmar</a></button>
+
+			<button class="botonlogin" type="submit"><a href="/usuario">Confirmar</a></button>
 
 		</form>
 
