@@ -67,7 +67,7 @@ hr {
 
 /*====== Main Header ======*/
 .main-header {
-  background-color: #1C6FCA;
+  background-color: rgb(43, 93, 201);
   margin-bottom: 20px;
 }
 
@@ -543,7 +543,7 @@ textarea.form-input {
 }
 /*FORMULARIO LOGIN */
 .body {
-    background-color: rgb(43, 93, 201);
+    background-color: #004C96;
     font-family: base-font-family;
     font-size: base-font-size;
     line-height: base-line-height;
