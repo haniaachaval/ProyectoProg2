@@ -674,6 +674,14 @@ textarea.form-input {
   margin-left: 0.5cm;
 }
 
+.confirmarE{
+  color:black;
+  font-size: 20px;
+  margin-left: 0.5cm;
+  margin-bottom: 0.5cm;
+}
+}
+
 .checkbox{
   margin-bottom: 5px;
   margin-left: 0.5cm;
