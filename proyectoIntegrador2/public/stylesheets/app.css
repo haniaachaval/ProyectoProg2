@@ -461,7 +461,8 @@ textarea.form-input {
 }
 
 .foto-perfil{
-  border-radius: 60%;
+  border-radius: 50%;
+  size: 100px;
   margin-top: 15px;
 }
 
@@ -475,6 +476,7 @@ textarea.form-input {
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
+  margin-left: 200px;
 }
 
 

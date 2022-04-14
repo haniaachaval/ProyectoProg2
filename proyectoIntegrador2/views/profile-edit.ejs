@@ -8,38 +8,39 @@
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
-			<div class="col-12">
+			<div class="login">
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/">
-				<div>
+		
+			<section>
+			<form class="formLogin" action="/">
+				<div class ="casilla">
 					<input type="text"  placeholder="<%=usuarios[0].usuario%>" class="inputs">
 			
 				</div>
 			
-				<div >
+				<div class ="casilla">
 					<input type="dni"   placeholder="<%=usuarios[0].documento%>" class="inputs">
 					<input type="date"  placeholder="<%=usuarios[0].fechaDeNacimiento%>" class="inputs">
 				</div>
 			
-				<div>
+				<div class ="casilla">
 					<input type="email" placeholder="<%=usuarios[0].email%>" class="inputs">
 				</div>
 			
-				<div>
-					<input type="password"  placeholder="<%=usuarios[0].contraseña%>" class="inputs">
+				<div class ="casilla">
 					<input type="password"  placeholder="<%=usuarios[0].contraseña%>" class="inputs">
 				</div>
 
-				<div>
+				<div class ="casilla">
 					<input type="file"  placeholder="<%=usuarios[0].fotoPerfil%>" class="inputs">
 				
 				</div>
 			
-				<a href="/"  role="button" class="confirmar">Confirmar</a>
+				<a href="/"  role="botonlogin" class="confirmar">Confirmar</a>
 			</form>
-
+		</section>
 
 		<%- include('./partials/footer')  %> 
 </body>
