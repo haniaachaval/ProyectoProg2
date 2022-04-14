@@ -164,9 +164,7 @@ hr {
 /*====== Products ======*/
 .products-wrapper {
   margin-bottom: 30px;
-  background-color:#1F8BDD;
   margin-top: 50px;
-  border-radius: 2%;
 }
 
 .products-title {
@@ -545,11 +543,7 @@ textarea.form-input {
 }
 /*FORMULARIO LOGIN */
 .body {
-    background-image: url("/images/fondo1.jpg");
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position: center center;
-    color: gray;
+    background-color: rgb(43, 93, 201);
     font-family: base-font-family;
     font-size: base-font-size;
     line-height: base-line-height;
@@ -679,7 +673,6 @@ textarea.form-input {
   font-size: 20px;
   margin-left: 0.5cm;
   margin-bottom: 0.5cm;
-}
 }
 
 .checkbox{
