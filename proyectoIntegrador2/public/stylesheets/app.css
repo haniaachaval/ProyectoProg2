@@ -6,7 +6,7 @@
 :root {
   --yellow: #EAC926;
   --dark-blue: #03264C;
-  --light-blue: #1259c3;
+  --light-blue: #12c3ab;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
@@ -67,7 +67,8 @@ hr {
 
 /*====== Main Header ======*/
 .main-header {
-  background-color: #0054ad;
+  background-color: #1C6FCA;
+  margin-bottom: 20px;
 }
 
 .main-header_home-link,
@@ -162,10 +163,10 @@ hr {
 
 /*====== Products ======*/
 .products-wrapper {
-  margin-top: 30px;
   margin-bottom: 30px;
-  background-color:#0054ad;
+  background-color:#1F8BDD;
   margin-top: 50px;
+  border-radius: 2%;
 }
 
 .products-title {
@@ -544,7 +545,10 @@ textarea.form-input {
 }
 /*FORMULARIO LOGIN */
 .body {
-    background: linear-gradient(45deg,  rgba(66, 183, 245,0.8) 0%,rgba(66, 245, 189,0.4) 100%);
+    background-image: url("/images/fondo1.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
     color: gray;
     font-family: base-font-family;
     font-size: base-font-size;
@@ -624,7 +628,8 @@ textarea.form-input {
 .register{
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
+  justify-items: center;
 }
 .registro{
   display: block;
