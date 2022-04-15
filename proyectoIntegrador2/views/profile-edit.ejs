@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+	
+		<%- include('partials/head') %> 
 
-	<%- include('partials/head') %> 
+	<body class="body">
+		<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
 
-	<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -14,7 +16,7 @@
 			<!-- Show the "ultimos" products -->
 		
 			<section>
-			<form class="formLogin" action="/">
+			<form class="formLogin" action="/" method="GET">
 				<div class ="casilla">
 					<input type="text"  placeholder="<%=usuarios[0].usuario%>" class="inputs">
 			

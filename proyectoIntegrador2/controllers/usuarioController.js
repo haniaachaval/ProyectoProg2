@@ -10,7 +10,8 @@ let usuarioController ={
     },
 
     login: function(req,res){
-        return res.render ('login');},
+        return res.render ('login'); 
+    },
 
     editarUsuario: function(req,res){
             return res.render ('profile-edit',{ usuarios: usuarios.lista});
