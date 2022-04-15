@@ -601,6 +601,7 @@ textarea.form-input {
   display: inline-block;
   width: auto;
   margin: 0 10px 0 0;
+  
 }
 .casilla{
   display: block;
@@ -686,8 +687,8 @@ textarea.form-input {
 }
 
 .recordarme{
-  color: white; 
-  font-size: 18px;
+  color:black;
+  font-size: 15px;
 }
 
 .perfil{
