@@ -4,11 +4,11 @@ const usuarios = require("../db/usuario");
 
 const productoController = {
     agregarProducto : function(req,res){
-        res.render ('product-add', {usuarios: usuarios.lista});
-},
+        return res.render ('product-add', {usuarios: usuarios.lista});
+    },
     detalleProducto : function(req,res){
-        res.render ('producto', { celulares: celulares.lista, comentario: comentario.lista });
-}
+        return res.render ('producto', { celulares: celulares.lista, comentario: comentario.lista });
+    }
 }
 
 module.exports = productoController

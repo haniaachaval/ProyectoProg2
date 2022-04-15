@@ -1,12 +1,12 @@
 const usuarios = require("../db/usuario");
 
-let usuarioController ={
+const usuarioController = {
     usuario: function(req,res){
         return res.render ('profile',{ usuarios: usuarios.lista});
     },
 
     registro:  function(req,res){
-            return res.render ('register');
+        return res.render ('register');
     },
 
     login: function(req,res){
@@ -14,10 +14,9 @@ let usuarioController ={
     },
 
     editarUsuario: function(req,res){
-            return res.render ('profile-edit',{ usuarios: usuarios.lista});
-        },
+        return res.render ('profile-edit',{ usuarios: usuarios.lista});
+    },
 
 }
-
 
 module.exports = usuarioController; 
