@@ -24,7 +24,7 @@ app.use(express.json());
 const session = require('express-session');
 app.use (session(
   {secret: 'mensaje',
-  resave: save,
+  resave: false,
   saveUninitialized: true}
 ));
 //header logueado y deslogueado
