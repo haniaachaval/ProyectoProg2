@@ -2,21 +2,20 @@
 <html lang="es">
 <!-- Include Head -->
 
-<%- include('partials/head') %> 
+		<%- include('partials/head') %> 
 
-<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
+	<body class="body">
+		<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
 
-<body class="body">
-	
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
+				<h2 class="subtitulo">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> <i>
-<form class="formLogin" >
+<form class="formLogin" method="GET">
 				<div >
 					<input type="text"  placeholder="Nombre de producto" class="inputs">
 				</div>

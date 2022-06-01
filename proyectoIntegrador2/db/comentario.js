@@ -30,8 +30,6 @@ let comentario = {
             texto: "Muy linda la tienda, super completa y con empleados muy amables",
             imagen: "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg",
         },
-
-
         {
             usuario: "Shakira",
             texto: "Compre un Samsung y funciono todo a la perfección. Lo recomiendo!!!!",

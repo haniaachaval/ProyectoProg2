@@ -1,22 +1,26 @@
 const usuarios = require("../db/usuario");
+const db = require("../database/models");
+const users = db.User
 
-let usuarioController ={
+const usuarioController = {
     usuario: function(req,res){
-        return res.render ('profile',{ usuarios: usuarios.lista});
-    },
-
+        users.findAll()
+            .then(function(usuarios){
+                res.send(usuarios)
+                //return res.render ('index', {title: 'Express'} );
+            });
+        },
     registro:  function(req,res){
-            return res.render ('register');
+        return res.render ('register');
     },
 
     login: function(req,res){
-        return res.render ('login');},
+        return res.render ('login'); 
+    },
 
     editarUsuario: function(req,res){
-            return res.render ('profile-edit',{ usuarios: usuarios.lista});
-        },
-
+        return res.render ('profile-edit',{ usuarios: usuarios.lista});
+    },
 }
-
 
 module.exports = usuarioController; 

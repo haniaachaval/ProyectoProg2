@@ -1,13 +1,11 @@
-let db = require("../db/celulares")
-const usuarios = require("../db/usuario")
+const db = require("../db/celulares")
 
 const indexController = {
     home : function(req,res){
-        res.render ('index',{celus: db.lista })
+        return res.render ('index',{celus: db.lista })
     },
-   
     resultados: function(req,res){
-        res.render('search-results')
+        return res.render('search-results')
     },
 }
 
