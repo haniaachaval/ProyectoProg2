@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 
-		
+	<% if (user != nule){ %> 
+		<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
+	<% }else { %> 
 		<%- include('partials/head') %> 
+	<% } %> 
 
 	<body class="body">
-		<%- include("partials/headerDeslogueado")%>
 
 
 		<!-- Banner -->

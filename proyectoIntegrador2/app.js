@@ -16,6 +16,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//lo q viene de un form se captura en forma de OL
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
+//session
+const session = require('express-session');
+app.use (session(
+  {secret: 'mensaje',
+  resave: save,
+  saveUninitialized: true}
+));
+//header logueado y deslogueado
+app.use(function(req,res,next){
+    if(req.session.UsuarioLogueado != undefined){
+      res.locals.user = req.session.usuarioLoguedo}
+      return next();
+    });
+
 //se estan requiriendo los modulos propios que estamos exportnado en los otros archivos
 const indexRouter = require('./routes/index');
 const productoRouter = require('./routes/producto');
