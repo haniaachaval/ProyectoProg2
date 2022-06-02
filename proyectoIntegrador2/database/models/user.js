@@ -20,7 +20,7 @@ module.exports = function (sequelize, dataTypes){
         },
         birth_date: {
             type: dataTypes.DATE
-        },
+        }
     }
 
  //configuraciones adicionales
@@ -31,8 +31,17 @@ let config = {
 }
 
 const User = sequelize.define (alias, cols, config);
+//Relaciones entre tablas
 
-//aca van las relaciones entre tablas
-
+User.associate = function(models){
+    User.hasMany(models.products, {
+        as:'usuario_productos',
+        foreignKey: 'user_id'
+    })
+    User.hasMany(models.comments, {
+        as:'comments_users',
+        foreignKey: 'user_id'
+    })}
+    
 return User;
 }

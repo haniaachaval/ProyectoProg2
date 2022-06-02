@@ -1,6 +1,7 @@
-const usuarios = require("../db/usuario");
+//const usuarios = require("../db/usuario");
 const db = require("../database/models");
 const users = db.User
+console.log(users)
 
 const usuarioController = {
     usuario: function(req,res){

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-	<% if (user != nule){ %> 
+	<% if (locals.user != undefined){ %> 
 		<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
 	<% }else { %> 
 		<%- include('partials/head') %> 
