@@ -1,6 +1,5 @@
-const celulares = require("../db/celulares");
-const comentario = require("../db/comentario");
-const usuarios = require("../db/usuario");
+const db = require("../database/models");
+const users = db.Producto
 
 const productoController = {
     agregarProducto : function(req,res){
