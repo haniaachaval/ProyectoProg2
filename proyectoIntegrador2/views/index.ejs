@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 
-	<% if (locals.user != undefined){ %> 
-		<%- include('partials/headerLogueado') %> 
-	<% }else { %> 
-		<%- include('partials/headerDeslogueado') %> 
-	<% } %> 
-
+	
+	<%- include('partials/head') %> 
+	
 	<body class="body">
-
+		<% if (locals.user != undefined){ %> 
+			<%- include('partials/headerLogueado') %> 
+		<% }else { %> 
+			<%- include('partials/headerDeslogueado') %> 
+		<% } %> 
 
 		<!-- Banner -->
 		<div class="banner">

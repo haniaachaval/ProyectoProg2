@@ -19,7 +19,10 @@
 		<h2 class="registrado">¿Ya estás registrado? <a href="/usuario/login">Ingresá aquí</a></h2>
 		</div>
 		
-		
+		<% if(locals.errores){  %> 
+			<p style> <%= errores.message %> </p>
+		<% } %> 
+
 		<div  class="formRegistro">
 			<form method="post" action="/usuario/store">
 				<div>
@@ -32,11 +35,11 @@
 				</div>
 			
 				<div>
-					<input type="email" placeholder="Email"  class="inputs">
+					<input type="email" placeholder="Email"  class="inputs" name="email">
 				</div>
 			
 				<div>
-					<input type="password"  placeholder="Contraseña"  class="inputs">
+					<input type="password"  placeholder="Contraseña"  class="inputs" name="password">
 				</div>
 
 				<a href="/usuario/login"  role="button" class="confirmar">Confirmar</a>
