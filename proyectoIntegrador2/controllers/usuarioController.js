@@ -1,72 +1,104 @@
 //const usuarios = require("../db/usuario");
 const db = require("../database/models");
 const users = db.User
-const bcrypt= require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const usuarioController = {
-    usuario: function(req,res){
+    usuario: function (req, res) {
         users.findAll()
-            .then(function(usuarios){
+            .then(function (usuarios) {
                 res.send(usuarios)
                 //return res.render ('index', {title: 'Express'} );
             });
-        },
-    registro:  function(req,res){
-        return res.render ('register');
+    },
+    registro: function (req, res) {
+        return res.render('register');
     },
 
-    store:  function(req,res){
+    store: function (req, res) {
         //detectar errores, situaciones irregulares
         let errores = {}
 
         //chequear que el email no este vacio
-        if(req.body.email == ''){
-            errores.message ='Completar el campo email';
+        if (req.body.email == '') {
+            errores.message = 'Completar el campo email';
             res.locals.errores = errores;
             return res.render('register');
-        } else if(req.body.password == ''){
-            errores.message ='Completar el campo password';
+        } else if (req.body.password == '') {
+            errores.message = 'Completar el campo password';
             res.locals.errores = errores;
             return res.render('register');
-        } else{
+        } else {
             //chequear que elemail no exista en la base
             users.findOne({
-                where: [{email: req.body.email}]
+                where: [{ email: req.body.email }]
             })
-            .then(function(user){
-                if(user !== null){
-                errores.message ='El email ya existe, elija uno nuevo';
-                res.locals.errores = errores;
-                return res.render('register');
-                } else {
-                        let user= {
-                            email:req.body.email,
+                .then(function (user) {
+                    if (user !== null) {
+                        errores.message = 'El email ya existe, elija uno nuevo';
+                        res.locals.errores = errores;
+                        return res.render('register');
+                    } else {
+                        let user = {
+                            email: req.body.email,
                             password: bcrypt.hashSync(req.body.password, 10),
                         }
-                
+
                         users.create(user)
-                            .then( function(userGuardado){ 
+                            .then(function (userGuardado) {
                                 return res.redirect('/')
                             })
-                            .catch( error => console.log(error))
-                    }   
-            })
-            .catch(errors => console.log(errors))
+                            .catch(error => console.log(error))
+                    }
+                })
+                .catch(errors => console.log(errors))
         }
     },
-        
-    login: function(req,res){
-        return res.render ('login'); 
+
+    login: function (req, res) {
+        return res.render('login');
     },
 
-    signIn: function(req,res){
-    //validar que el form traiga datos de email y contrasena (lo mismo que hicimos en el registro)
-    //una vez que tenemos findOne preguntamos si chequeamos la contra con compareSync(), si no coinciden mandamos mensaje de error, sino registramos.
+    signIn: function (req, res) {
+        //validar que el form traiga datos de email y contrasena (lo mismo que hicimos en el registro)
+        //una vez que tenemos findOne preguntamos si chequeamos la contra con compareSync(), si no coinciden mandamos mensaje de error, sino registramos.
+        let error = {}
+
+       /*users.findOne({
+            where: [{ email: req.body.email }]
+        })
+            .then(function (user) {
+                if (user == null) {
+                    error.message = 'El email no pertenece a ningun usuario';
+                    res.locals.error = error;
+                    return res.render('login');
+                }
+                else if(){
+
+                }
+            
+
+                else {
+                    let user = {
+                        email: req.body.email,
+                        password: bcrypt.hashSync(req.body.password, 10),
+                    }
+
+                    users.signIn(user)
+                        .then(function (userLogueado) {
+                            return res.redirect('/')
+                        })
+                        .catch(error => console.log(error))
+
+                }
+            })
+
+        .catch(errors => console.log(errors))*/
+},
+
+    editarUsuario: function(req, res) {
+        return res.render('profile-edit', { usuarios: usuarios.lista });
     },
 
-    editarUsuario: function(req,res){
-        return res.render ('profile-edit',{ usuarios: usuarios.lista});
-    },
 }
-
 module.exports = usuarioController; 

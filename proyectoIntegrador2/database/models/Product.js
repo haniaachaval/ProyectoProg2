@@ -26,13 +26,23 @@ module.exports = function (sequelize, dataTypes){
         user_id:{
             type:dataTypes.INTEGER
         },
+        createdAt:{
+            type:dataTypes.DATE
+        },
+        updatedAt:{
+            type:dataTypes.DATE
+        },
+        deletedAt:{
+            type:dataTypes.DATE
+        },
+
     }
     
     
     let config = {
         tableName: 'products', 
-        timestamps: false, //Si la tabla no tiene los campos createdAt y updatedAt
-        underscored: true, //Si la tabla tiene columnas con nombres usando guiones bajos.
+        timestamps: true, 
+        underscored: true, 
     }
     
     const Product = sequelize.define(alias, cols, config);
