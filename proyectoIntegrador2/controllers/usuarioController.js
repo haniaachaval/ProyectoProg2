@@ -86,28 +86,6 @@ const usuarioController = {
                 req.session.user = user;
                 return res.redirect('/')
 
-
-
-
-
-
-
-
-
-
-                /*else {
-                    let user = {
-                        email: req.body.email,
-                        password: bcrypt.hashSync(req.body.password, 10),
-                    }
-
-                    users.signIn(user)
-                        .then(function (userLogueado) {
-                            return res.redirect('/')
-                        })
-                        .catch(error => console.log(error))
-
-                }*/
             })
 
             .catch(errors => console.log(errors))

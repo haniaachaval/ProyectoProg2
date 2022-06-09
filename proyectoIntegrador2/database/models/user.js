@@ -31,17 +31,15 @@ let config = {
 }
 
 const User = sequelize.define (alias, cols, config);
-//Relaciones entre tablas
 
-/*User.associate = function(models){
-    User.hasMany(models.products, {
-        as:'usuario_productos',
-        foreignKey: 'user_id'
-    })
-    User.hasMany(models.comments, {
-        as:'comments_users',
-        foreignKey: 'user_id'
-    })}
-    */
+Product.belongsTo(models.User, {
+    as:'User',
+    foreignKey: 'user_id'
+})
+Product.hasMany(models.Comment, {
+    as:'Comment',
+    foreignKey: 'product_id'
+})
+
 return User;
 }
