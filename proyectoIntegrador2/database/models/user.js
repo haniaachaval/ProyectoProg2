@@ -40,6 +40,13 @@ User.associate = function(models){
     User.hasMany(models.Comment, {
         as:'Comment',
         foreignKey: 'user_id'
-    })}
+    })
+    User.belongsToMany(models.User,{
+        as:'Followers',
+        through: 'seguido_seguidor',
+        otherKey: 'seguidor_id',
+        foreignKey: 'seguido_id'
+    })
+}
 return User;
 }
