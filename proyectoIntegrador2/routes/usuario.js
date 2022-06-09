@@ -7,7 +7,7 @@ router.get('/', usuarioController.usuario);
 router.get('/registro', usuarioController.registro);
 router.post('/store', usuarioController.store)
 router.get('/login', usuarioController.login);
-router.get('/login', usuarioController.signIn);
+router.post('/login', usuarioController.signIn);
 router.get('/editar', usuarioController.editarUsuario);
 
 module.exports = router;

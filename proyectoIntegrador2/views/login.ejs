@@ -19,23 +19,27 @@
 		<form class="formLogin" method="post" action="/usuario/login">
 
 			<div class=" casilla">
-				<input type="email" placeholder="Email" class="inputs">
+				<input type="email" placeholder="Email" class="inputs" name="email">
 			</div>
 		
 			<div class=" casilla">
-				<input type="password" placeholder="Contraseña" class="inputs">
+				<input type="password" placeholder="Contraseña" class="inputs" name="password">
 				
 			</div>
 
 			<div class=" casilla">
-				<input type="checkbox" class="checkbox">
+				<input type="checkbox" class="checkbox" name="recordarme">
 			<label for="recordame" class="recordarme">recordarme</label>
 
 			</div>
 
-			<button class="botonlogin" type="submit"><a href="/usuario">Confirmar</a></button>
+			<button class="botonlogin" type="submit">Confirmar</button>
 
 		</form>
+
+		<% if(locals.error){  %> 
+			<p style> <%= error.message %> </p>
+		<% } %> 
 
 	</section>
 				

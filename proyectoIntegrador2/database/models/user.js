@@ -27,7 +27,7 @@ module.exports = function (sequelize, dataTypes){
 let config = {
     tableName: 'users', //nombre de la tabla db
     timestamps: true, //le dice al modelo si en la tabla esta createdAt, updatedAt
-    underscored: true, //le avisa a sequelize q esta todo en minuscula no hay camelcase
+    underscored: false, //le avisa a sequelize q esta todo en minuscula no hay camelcase
 }
 
 const User = sequelize.define (alias, cols, config);

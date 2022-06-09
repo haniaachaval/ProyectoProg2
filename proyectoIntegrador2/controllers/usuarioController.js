@@ -60,25 +60,42 @@ const usuarioController = {
     },
 
     signIn: function (req, res) {
+
         //validar que el form traiga datos de email y contrasena (lo mismo que hicimos en el registro)
         //una vez que tenemos findOne preguntamos si chequeamos la contra con compareSync(), si no coinciden mandamos mensaje de error, sino registramos.
         let error = {}
 
-       /*users.findOne({
+        users.findOne({
             where: [{ email: req.body.email }]
         })
             .then(function (user) {
+
                 if (user == null) {
                     error.message = 'El email no pertenece a ningun usuario';
                     res.locals.error = error;
                     return res.render('login');
                 }
-                else if(){
 
+                let check = bcrypt.compareSync(req.body.password, user.password)
+                if (check == false) {
+                    error.message = 'Contraseña incorrecta';
+                    res.locals.error = error;
+                    return res.render('login');
                 }
-            
 
-                else {
+                req.session.user = user;
+                return res.redirect('/')
+
+
+
+
+
+
+
+
+
+
+                /*else {
                     let user = {
                         email: req.body.email,
                         password: bcrypt.hashSync(req.body.password, 10),
@@ -90,13 +107,13 @@ const usuarioController = {
                         })
                         .catch(error => console.log(error))
 
-                }
+                }*/
             })
 
-        .catch(errors => console.log(errors))*/
-},
+            .catch(errors => console.log(errors))
+    },
 
-    editarUsuario: function(req, res) {
+    editarUsuario: function (req, res) {
         return res.render('profile-edit', { usuarios: usuarios.lista });
     },
 
