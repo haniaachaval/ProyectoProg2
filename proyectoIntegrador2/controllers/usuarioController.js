@@ -28,7 +28,11 @@ const usuarioController = {
             errores.message = 'Completar el campo password';
             res.locals.errores = errores;
             return res.render('register');
-        } else {
+        } else if (req.body.password.length < 3 ) {
+            errores.message = 'La constraseña debe tener más de tres caracteres';
+            res.locals.errores = errores;
+            return res.render('register');
+        }else {
             //chequear que elemail no exista en la base
             users.findOne({
                 where: [{ email: req.body.email }]
@@ -86,6 +90,28 @@ const usuarioController = {
                 req.session.user = user;
                 return res.redirect('/')
 
+
+
+
+
+
+
+
+
+
+                /*else {
+                    let user = {
+                        email: req.body.email,
+                        password: bcrypt.hashSync(req.body.password, 10),
+                    }
+
+                    users.signIn(user)
+                        .then(function (userLogueado) {
+                            return res.redirect('/')
+                        })
+                        .catch(error => console.log(error))
+
+                }*/
             })
 
             .catch(errors => console.log(errors))
