@@ -24,7 +24,7 @@
 		<% } %> 
 
 		<div  class="formRegistro">
-			<form method="post" action="/usuario/store">
+			<form method="post" action="/usuario/store" enctype="multipart/form-data">
 				<div>
 					<input type="text"  placeholder="Nombre de usuario" class="inputs" name="name">
 			
@@ -40,6 +40,10 @@
 			
 				<div>
 					<input type="password"  placeholder="Contraseña"  class="inputs" name="password">
+				</div>
+
+				<div>
+					<input type="file" class="inputs" name="foto">
 				</div>
 
 				<button class="confirmar" type="submit">Confirmar</button>

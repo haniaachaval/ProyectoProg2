@@ -20,6 +20,11 @@ module.exports = function (sequelize, dataTypes){
         },
         birth_date: {
             type: dataTypes.DATE
+        },
+
+        image:{
+            type:dataTypes.STRING
+
         }
     }
 

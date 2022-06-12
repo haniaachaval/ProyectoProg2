@@ -1,14 +1,13 @@
 //const usuarios = require("../db/usuario");
 const db = require("../database/models");
-const user = db.User
+const User = db.User
 const bcrypt = require('bcryptjs');
 
 const usuarioController = {
     usuario: function (req, res) {
-        user.findAll()
+        User.findAll()
             .then(function (usuarios) {
-                res.send(usuarios)
-                //return res.render ('index', {title: 'Express'} );
+                return res.render ('profile');
             });
     },
     registro: function (req, res) {
@@ -18,7 +17,6 @@ const usuarioController = {
     store: function (req, res) {
         //detectar errores, situaciones irregulares
         let errores = {}
-
         //chequear que el email no este vacio
         if (req.body.email == '') {
             errores.message = 'Completar el campo email';
@@ -34,7 +32,7 @@ const usuarioController = {
             return res.render('register');
         }else {
             //chequear que elemail no exista en la base
-            user.findOne({
+            User.findOne({
                 where: [{ email: req.body.email }]
             })
                 .then(function (user) {
@@ -48,9 +46,10 @@ const usuarioController = {
                             email: req.body.email,
                             password: bcrypt.hashSync(req.body.password, 10),
                             birth_date: req.body.cumple,
+                            image: req.file.filename,
                         }
 
-                        user.create(user)
+                        User.create(user)
                             .then(function (userGuardado) {
                                 return res.redirect('/')
                             })
@@ -67,11 +66,13 @@ const usuarioController = {
 
     signIn: function (req, res) {
 
+        console.log(req.body)
+
         //validar que el form traiga datos de email y contrasena (lo mismo que hicimos en el registro)
         //una vez que tenemos findOne preguntamos si chequeamos la contra con compareSync(), si no coinciden mandamos mensaje de error, sino registramos.
         let error = {}
 
-        user.findOne({
+        User.findOne({
             where: [{ email: req.body.email }]
         })
             .then(function (user) {
@@ -90,30 +91,13 @@ const usuarioController = {
                 }
 
                 req.session.user = user;
+
+                if(req.body.recordarme != undefined){
+                    res.cookie('userId',user.id,{maxAge: 1000*60*100}) 
+                }
+              
                 return res.redirect('/')
 
-
-
-
-
-
-
-
-
-
-                /*else {
-                    let user = {
-                        email: req.body.email,
-                        password: bcrypt.hashSync(req.body.password, 10),
-                    }
-
-                    users.signIn(user)
-                        .then(function (userLogueado) {
-                            return res.redirect('/')
-                        })
-                        .catch(error => console.log(error))
-
-                }*/
             })
 
             .catch(errors => console.log(errors))
@@ -121,6 +105,12 @@ const usuarioController = {
 
     editarUsuario: function (req, res) {
         return res.render('profile-edit', { usuarios: usuarios.lista });
+    },
+
+    logout: function(req,res){
+        req.session.user= undefined
+        res.clearCookie('userId')
+        res.redirect('/usuario/login')
     },
 
 }
