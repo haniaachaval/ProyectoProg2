@@ -1,11 +1,11 @@
 //const usuarios = require("../db/usuario");
 const db = require("../database/models");
-const users = db.User
+const user = db.User
 const bcrypt = require('bcryptjs');
 
 const usuarioController = {
     usuario: function (req, res) {
-        users.findAll()
+        user.findAll()
             .then(function (usuarios) {
                 res.send(usuarios)
                 //return res.render ('index', {title: 'Express'} );
@@ -34,7 +34,7 @@ const usuarioController = {
             return res.render('register');
         }else {
             //chequear que elemail no exista en la base
-            users.findOne({
+            user.findOne({
                 where: [{ email: req.body.email }]
             })
                 .then(function (user) {
@@ -44,11 +44,13 @@ const usuarioController = {
                         return res.render('register');
                     } else {
                         let user = {
+                            userName:req.body.name,
                             email: req.body.email,
                             password: bcrypt.hashSync(req.body.password, 10),
+                            birth_date: req.body.cumple,
                         }
 
-                        users.create(user)
+                        user.create(user)
                             .then(function (userGuardado) {
                                 return res.redirect('/')
                             })
@@ -69,7 +71,7 @@ const usuarioController = {
         //una vez que tenemos findOne preguntamos si chequeamos la contra con compareSync(), si no coinciden mandamos mensaje de error, sino registramos.
         let error = {}
 
-        users.findOne({
+        user.findOne({
             where: [{ email: req.body.email }]
         })
             .then(function (user) {

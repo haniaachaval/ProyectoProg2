@@ -38,8 +38,8 @@ app.use (session(
 })*/
 //header logueado y deslogueado
 app.use(function(req,res,next){
-    if(req.session.users != undefined){
-      res.locals.user = req.session.users}
+    if(req.session.user != undefined){
+      res.locals.user = req.session.user}
       return next();
     });
 
