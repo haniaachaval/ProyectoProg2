@@ -5,11 +5,11 @@
 	<%- include('partials/head') %> 
 	
 	<body class="body">
-		<% if (locals.user != undefined){ %> 
+		<% if (locals.users != undefined){ %> 
 			<%- include('partials/headerLogueado') %> 
 		<% }else { %> 
 			<%- include('partials/headerDeslogueado') %> 
-		<% } %> 
+		<% } %>  
 
 		<!-- Banner -->
 		<div class="banner">
@@ -111,7 +111,7 @@
 
 
 		<!-- footer -->
-		<%- include('./partials/footer')  %> 
+		<%- include('partials/footer')  %> 
 		<!-- /footer -->
 	</body>	
 </html>

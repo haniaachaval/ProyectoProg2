@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const models = require('../proyectoIntegrador2/database/models')
+const db = models.User
 
 const app = express();
 
@@ -20,17 +22,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-//session
+//ejecutamos session
 const session = require('express-session');
 app.use (session(
   {secret: 'mensaje',
   resave: false,
   saveUninitialized: true}
 ));
+//creo variable que contiene mis usuarios
+
+/*app.use(function(req,res,next){
+  res.locals.usuario = {
+    usuario: req.session.Users.userName}
+  return next();
+})*/
 //header logueado y deslogueado
 app.use(function(req,res,next){
-    if(req.session.UsuarioLogueado != undefined){
-      res.locals.user = req.session.usuarioLoguedo}
+    if(req.session.users != undefined){
+      res.locals.user = req.session.users}
       return next();
     });
 
