@@ -108,9 +108,13 @@ const usuarioController = {
     },
 
     logout: function(req,res){
-        req.session.user= undefined
-        res.clearCookie('userId')
-        res.redirect('/usuario/login')
+        req.session.destroy();
+
+        if(req.cookies.userId !== undefined){
+            res.clearCookie('userId')
+        }
+
+        return res.redirect('/');
     },
 
 }

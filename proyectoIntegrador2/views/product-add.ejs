@@ -5,7 +5,7 @@
 		<%- include('partials/head') %> 
 
 	<body class="body">
-		<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
+		<%- include('partials/headerLogueado') %> 
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -15,26 +15,42 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> <i>
-<form class="formLogin" method="GET">
+				<% if(locals.errores){  %> 
+					<p style> <%= errores.message %> </p>
+				<% } %> 
+
+
+<form class="formLogin" method="post" enctype="multipart/form-data">
 				<div >
-					<input type="text"  placeholder="Nombre de producto" class="inputs">
+					<input type="text"  placeholder="Nombre de producto" class="inputs" name="producto">
 				</div>
-			
+
 				<div >
-					<input type="text"   placeholder="Descripcion del producto" class="inputs">
+					<input type="text"  placeholder="Marca" class="inputs" name="marca">
 				</div>
-			
+
+				<div >
+					<input type="text"  placeholder="Modelo" class="inputs" name="modelo">
+				</div>
+
+				<div >
+					<input type="text"  placeholder="Estado" class="inputs" name="estado">
+				</div>
+
+				<div >
+					<input type="text"  placeholder="Color" class="inputs" name="color">
+				</div>
+
+				<div >
+					<input type="text"  placeholder="Descripcion del producto" class="inputs" name="descripcion">
+				</div>
+		
 				<div>
-					<input type="file"  placeholder="imagen" class="inputs">
+					<input type="file"  placeholder="imagen" class="inputs" name="imagen">
 			
 				</div>
-			
-				<div>
-					<input type="date"  placeholder="Fecha de carga" class="inputs">
-				
-				</div>
-				
-				<a href="/"  role="button" class="botonlogin">Agregar</a>
+
+				<button class="botonlogin">Agregar</button>
 			</form>
 			</h2>
 

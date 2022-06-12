@@ -26,22 +26,30 @@ module.exports = function (sequelize, dataTypes){
         user_id:{
             type:dataTypes.INTEGER
         },
-        createdAt:{
+        /*created_at:{
             type:dataTypes.DATE
         },
-        updatedAt:{
+        updated_at:{
             type:dataTypes.DATE
         },
-        deletedAt:{
+        deleted_at:{
             type:dataTypes.DATE
+        },*/
+
+        image: {
+            type:dataTypes.STRING
         },
+
+        descripcion: {
+            type:dataTypes.STRING
+        }
 
     }
     
     
     let config = {
         tableName: 'products', 
-        timestamps: true, 
+        timestamps: false, 
         underscored: true, 
     }
     
