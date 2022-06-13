@@ -1,14 +1,45 @@
 //const usuarios = require("../db/usuario");
 const db = require("../database/models");
 const User = db.User
+const Product = db.Product
+const Comment = db.Comment
+const Follower = db.Follower
 const bcrypt = require('bcryptjs');
 
 const usuarioController = {
     usuario: function (req, res) {
-        User.findAll()
+        Product.findAll(
+            {where: {user_id:req.session.user.id}}
+        )
+        .then(function(productosUsuario){
+            Comment.findAll(
+                {where: {user_id:req.session.user.id}}
+            )
+            .then(function(comentariosUsuario){
+                Follower.findAll(
+                    {where: {seguido_id:req.session.user.id}}
+                )
+                .then(function(seguidores){
+                    return res.render ('profile',{productos:productosUsuario.length,comentarios:comentariosUsuario.length, seguidores:seguidores.length});
+                })
+        
+                .catch(errors => console.log(errors))
+            })
+    
+            .catch(errors => console.log(errors))
+        })
+
+        .catch(errors => console.log(errors))
+
+        
+
+       
+        
+        /*User.findAll()
             .then(function (usuarios) {
                 return res.render ('profile');
             });
+            */
     },
     registro: function (req, res) {
         return res.render('register');
@@ -66,10 +97,7 @@ const usuarioController = {
 
     signIn: function (req, res) {
 
-        console.log(req.body)
-
-        //validar que el form traiga datos de email y contrasena (lo mismo que hicimos en el registro)
-        //una vez que tenemos findOne preguntamos si chequeamos la contra con compareSync(), si no coinciden mandamos mensaje de error, sino registramos.
+    
         let error = {}
 
         User.findOne({

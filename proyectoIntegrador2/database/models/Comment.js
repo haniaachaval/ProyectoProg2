@@ -17,22 +17,23 @@ module.exports = function (sequelize, dataTypes){
         user_id:{
             type:dataTypes.INTEGER
         },
-        createdAt:{
+        
+       /* created_at:{
             type:dataTypes.DATE
         },
-        updatedAt:{
+        updated_at:{
             type:dataTypes.DATE
         },
-        deletedAt:{
+        deleted_at:{
             type:dataTypes.DATE
-        },
+        },*/
 
     }
     
     
     let config = {
         tableName: 'Comments', 
-        timestamps: true, 
+        timestamps: false, 
         underscored: true, 
     }
     
