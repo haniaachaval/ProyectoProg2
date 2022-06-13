@@ -20,9 +20,6 @@ module.exports = function (sequelize, dataTypes){
         color:{
             type:dataTypes.STRING
         },
-        cover_url:{
-            type:dataTypes.STRING
-        },
         user_id:{
             type:dataTypes.INTEGER
         },

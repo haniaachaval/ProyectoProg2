@@ -46,7 +46,7 @@ const usuarioController = {
                             email: req.body.email,
                             password: bcrypt.hashSync(req.body.password, 10),
                             birth_date: req.body.cumple,
-                            image: req.file.filename,
+                            image: req.file.image,
                         }
 
                         User.create(user)
@@ -95,7 +95,7 @@ const usuarioController = {
                 if(req.body.recordarme != undefined){
                     res.cookie('userId',user.id,{maxAge: 1000*60*100}) 
                 }
-              
+            
                 return res.redirect('/')
 
             })

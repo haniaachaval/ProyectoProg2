@@ -1,12 +1,50 @@
 const db = require("../database/models");
-const Product = db.Product
+const Product = db.Product;
+const Comment = db.Comment;
+
+
 
 const productoController = {
     agregarProducto: function (req, res) {
         return res.render('product-add', { usuarios: [] });
     },
     detalleProducto: function (req, res) {
-        return res.render('producto', { celulares: [] });
+        console.log(req.params);
+        var id = req.params.idProducto
+        console.log(id)
+
+        Product.findByPk(id,{
+            include: [{association: 'User'}]
+        })
+        .then((producto) => {
+            console.log(producto)
+            return res.render('producto',{
+                productos : producto,
+                comentarios: [],
+            });
+        })
+    .catch((error) => {
+        console.log(error)
+        return res.send(error);
+    })
+    },
+    comentarios: function (req, res) {
+
+        let nuevoComment = {
+            product_id: req.params.id,
+            user_id: req.session.user.id,
+            comments: req.body.comments,
+           
+        }
+
+        Comment.create(nuevoComment)
+        .then(()=>{
+            return res.redirect ('producto')
+        })
+
+        .catch((error) => {
+            return res.send(error);
+        })
     },
 
     nuevoProducto: function (req, res) {
@@ -56,7 +94,7 @@ const productoController = {
                 image: req.file.filename,
                 descripcion: req.body.descripcion,
                 user_id: req.session.user.id 
-              })
+            })
 
             .then(function (productoGuardado) {
                 return res.redirect('/producto')
