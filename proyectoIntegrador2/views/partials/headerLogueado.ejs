@@ -31,10 +31,13 @@
 			
 
 			<ul class="right-navbar">
-				<li><a class="subtitulo" href="/usuario">
+				
+				<li><a class="subtitulo" href="/usuario/perfil/<%= user.id %>">
 					<%= user.userName %> <i class="fas fa-user"></i>
 					</a>
 				</li>
+
+		
 				<li>
 					<form action="/usuario/logout" method="post">
 						<button class="logout" type="submit">

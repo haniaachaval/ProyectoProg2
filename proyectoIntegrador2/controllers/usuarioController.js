@@ -8,19 +8,29 @@ const bcrypt = require('bcryptjs');
 
 const usuarioController = {
     usuario: function (req, res) {
+        
+        let userId = req.params.id
+        
         Product.findAll(
-            {where: {user_id:req.session.user.id}}
+            {where: {user_id:userId}}
         )
         .then(function(productosUsuario){
             Comment.findAll(
-                {where: {user_id:req.session.user.id}}
+                {where: {user_id:userId}}
             )
             .then(function(comentariosUsuario){
                 Follower.findAll(
-                    {where: {seguido_id:req.session.user.id}}
+                    {where: {seguido_id:userId}}
                 )
                 .then(function(seguidores){
-                    return res.render ('profile',{productos:productosUsuario.length,comentarios:comentariosUsuario.length, seguidores:seguidores.length});
+                    User.findByPk(userId)
+                    .then(function(perfil){
+                    return res.render ('profile',{perfil:perfil,productos:productosUsuario,comentarios:comentariosUsuario.length, seguidores:seguidores.length});
+                        
+                    })
+                    .catch(errors => console.log(errors))
+
+                
                 })
         
                 .catch(errors => console.log(errors))
@@ -92,6 +102,7 @@ const usuarioController = {
     },
 
     login: function (req, res) {
+
         return res.render('login');
     },
 
@@ -123,6 +134,8 @@ const usuarioController = {
                 if(req.body.recordarme != undefined){
                     res.cookie('userId',user.id,{maxAge: 1000*60*100}) 
                 }
+
+                
             
                 return res.redirect('/')
 
@@ -132,7 +145,57 @@ const usuarioController = {
     },
 
     editarUsuario: function (req, res) {
-        return res.render('profile-edit', { usuarios: usuarios.lista });
+        return res.render('profile-edit');
+    },
+
+    actualizar: function(req, res) {
+        let errores = {}
+    
+        if (req.body.email == '') {
+            errores.message = 'Completar el campo email';
+            res.locals.errores = errores;
+            return res.render('profile-edit');
+        } else if (req.body.usuario == '') {
+            errores.message = 'Completar el campo nombre';
+            res.locals.errores = errores;
+            return res.render('profile-edit');
+
+        
+        }else if (req.file == undefined) {
+            errores.message = 'Completar el campo imagen';
+            res.locals.errores = errores;
+            return res.render('profile-edit');}
+        
+        else {
+            User.findOne({
+                where: [{ email: req.body.email }]
+            })
+                .then(function (user) {
+                    if (user !== null) {
+                        errores.message = 'El email ya existe, elija uno nuevo';
+                        res.locals.errores = errores;
+                        return res.render('profile-edit');
+                    } else {
+                        let user = {
+                            userName:req.body.usuario,
+                            email: req.body.email,
+                            password: req.session.user.password,
+                            birth_date: req.session.user.birth_date,
+                            image: req.file.image
+                            
+                        }
+
+                        req.session.user.image=user.image
+
+                        User.update(user, {where:{id:req.session.user.id}})
+                            .then(function (userActualizado) {
+                                return res.redirect('/usuario/perfil/'+req.session.user.id)
+                            })
+                            .catch(error => console.log(error))
+                    }
+                })
+                .catch(errors => console.log(errors))
+        }
     },
 
     logout: function(req,res){

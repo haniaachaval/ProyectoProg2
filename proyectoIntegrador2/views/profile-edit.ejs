@@ -4,7 +4,7 @@
 		<%- include('partials/head') %> 
 
 	<body class="body">
-		<%- include('partials/headerLogueado', {usuarios: usuarios}) %> 
+		<%- include('partials/headerLogueado') %> 
 
 
 	<!-- Novedades -->
@@ -16,31 +16,28 @@
 			<!-- Show the "ultimos" products -->
 		
 			<section>
-			<form class="formLogin" action="/" method="GET">
+				<% if(locals.errores){  %> 
+					<p style> <%= errores.message %> </p>
+				<% } %> 
+			<form class="formLogin" action="/usuario/editar" method="post" enctype="multipart/form-data">
 				<div class ="casilla">
-					<input type="text"  placeholder="<%=usuarios[0].usuario%>" class="inputs">
+					<input type="text" name="usuario" placeholder="Nombre de usuario" value="<%=user.userName%>" class="inputs">
 			
 				</div>
 			
-				<div class ="casilla">
-					<input type="dni"   placeholder="<%=usuarios[0].documento%>" class="inputs">
-					<input type="date"  placeholder="<%=usuarios[0].fechaDeNacimiento%>" class="inputs">
-				</div>
+			
 			
 				<div class ="casilla">
-					<input type="email" placeholder="<%=usuarios[0].email%>" class="inputs">
+					<input type="email" name="email"placeholder="email" value="<%=user.email%>" class="inputs">
 				</div>
 			
+				
 				<div class ="casilla">
-					<input type="password"  placeholder="<%=usuarios[0].contraseña%>" class="inputs">
-				</div>
-
-				<div class ="casilla">
-					<input type="file"  placeholder="<%=usuarios[0].fotoPerfil%>" class="inputs">
+					<input type="file" name="foto" placeholder="Foto de perfil" class="inputs">
 				
 				</div>
 			
-				<a href="/"  role="botonlogin" class="confirmarE">Confirmar</a>
+				<button type="submit"  role="botonlogin" class="confirmarE">Confirmar</button>
 			</form>
 		</section>
 
