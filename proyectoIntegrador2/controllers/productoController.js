@@ -8,13 +8,14 @@ const productoController = {
     agregarProducto: function (req, res) {
         return res.render('product-add', { usuarios: [] });
     },
+
     detalleProducto: function (req, res) {
         console.log(req.params);
         var id = req.params.idProducto
         console.log(id)
 
         Product.findByPk(id,{
-            include: [{association: 'User'}]
+            include: [{association: 'User'}, {association: 'Comment', include: [{association: 'User'}]}]
         })
         .then((producto) => {
             console.log(producto)
@@ -33,11 +34,11 @@ const productoController = {
         let nuevoComment = {
             product_id: req.params.id,
             user_id: req.session.user.id,
-            comments: req.body.comments,
-           
+            comments: req.body.comentario,
         }
 
         Comment.create(nuevoComment)
+
         .then(()=>{
             return res.redirect ('producto')
         })
@@ -50,32 +51,32 @@ const productoController = {
     nuevoProducto: function (req, res) {
         let errores = { message: "" }
         if (req.body.producto == '') {
-            errores.message = 'Completar el campo nombre.';
+            errores.message = 'Completar el campo nombre';
         }
         if (req.body.marca == '') {
-            errores.message = errores.message + 'Completar el campo marca.';
+            errores.message = errores.message + 'Completar el campo marca';
 
         }
         if (req.body.modelo == '') {
-            errores.message = errores.message + 'Completar el campo modelo.';
+            errores.message = errores.message + 'Completar el campo modelo';
 
         }
 
         if (req.body.estado == '') {
-            errores.message = errores.message + 'Completar el campo estado.';
+            errores.message = errores.message + 'Completar el campo estado';
         }
 
         if (req.body.color == '') {
-            errores.message = errores.message + 'Completar el campo color.';
+            errores.message = errores.message + 'Completar el campo color';
 
         }
 
         if (req.body.descripcion == '') {
-            errores.message = errores.message + 'Completar la descripcion del producto.';
+            errores.message = errores.message + 'Completar la descripcion del producto';
         }
 
         if (req.file == undefined) {
-            errores.message = errores.message + 'Agregar imagen.';
+            errores.message = errores.message + 'Agregar imagen';
 
         }
 
