@@ -25,6 +25,8 @@ router.post('/login', usuarioController.signIn);
 router.get('/editar', usuarioController.editarUsuario);
 router.post('/editar', upload.single("foto"), usuarioController.actualizar);
 router.post('/logout', usuarioController.logout);
+router.get('/seguir/:id', usuarioController.seguir);
+
 
 
 module.exports = router;
