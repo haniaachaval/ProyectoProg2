@@ -1,64 +1,34 @@
 //const usuarios = require("../db/usuario");
 const db = require("../database/models");
 const User = db.User
-const Product = db.Product
-const Comment = db.Comment
-const Follower = db.Follower
 const bcrypt = require('bcryptjs');
+
+
 
 const usuarioController = {
     usuario: function (req, res) {
-        
+
         let userId = req.params.id
-        
-        Product.findAll(
-            {where: {user_id:userId}}
-        )
-        .then(function(productosUsuario){
-            Comment.findAll(
-                {where: {user_id:userId}}
-            )
-            .then(function(comentariosUsuario){
-                Follower.findAll(
-                    {where: {seguido_id:userId}}
-                )
-                .then(function(seguidores){
-                    User.findByPk(userId)
-                    .then(function(perfil){
-                    return res.render ('profile',{perfil:perfil,productos:productosUsuario,comentarios:comentariosUsuario.length, seguidores:seguidores.length});
-                        
-                    })
-                    .catch(errors => console.log(errors))
 
-                
-                })
-        
-                .catch(errors => console.log(errors))
-            })
-    
-            .catch(errors => console.log(errors))
+        User.findByPk(userId, {
+            include: [
+                { association: 'Product' },
+                { association:'Comment' },
+                { association:'Followers' },
+            ]
         })
+        .then(data => {
+                return res.render('profile', { data: data })
+            })
 
-        .catch(errors => console.log(errors))
-
-        
-
-       
-        
-        /*User.findAll()
-            .then(function (usuarios) {
-                return res.render ('profile');
-            });
-            */
     },
     registro: function (req, res) {
         return res.render('register');
     },
 
     store: function (req, res) {
-        //detectar errores, situaciones irregulares
+        
         let errores = {}
-        //chequear que el email no este vacio
         if (req.body.email == '') {
             errores.message = 'Completar el campo email';
             res.locals.errores = errores;
@@ -67,12 +37,11 @@ const usuarioController = {
             errores.message = 'Completar el campo password';
             res.locals.errores = errores;
             return res.render('register');
-        } else if (req.body.password.length < 3 ) {
+        } else if (req.body.password.length < 3) {
             errores.message = 'La constraseña debe tener más de tres caracteres';
             res.locals.errores = errores;
             return res.render('register');
-        }else {
-            //chequear que elemail no exista en la base
+        } else {
             User.findOne({
                 where: [{ email: req.body.email }]
             })
@@ -83,7 +52,7 @@ const usuarioController = {
                         return res.render('register');
                     } else {
                         let user = {
-                            userName:req.body.name,
+                            userName: req.body.name,
                             email: req.body.email,
                             password: bcrypt.hashSync(req.body.password, 10),
                             birth_date: req.body.cumple,
@@ -108,7 +77,7 @@ const usuarioController = {
 
     signIn: function (req, res) {
 
-    
+
         let error = {}
 
         User.findOne({
@@ -131,12 +100,12 @@ const usuarioController = {
 
                 req.session.user = user;
 
-                if(req.body.recordarme != undefined){
-                    res.cookie('userId',user.id,{maxAge: 1000*60*100}) 
+                if (req.body.recordarme != undefined) {
+                    res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100 })
                 }
 
-                
-            
+
+
                 return res.redirect('/')
 
             })
@@ -148,9 +117,9 @@ const usuarioController = {
         return res.render('profile-edit');
     },
 
-    actualizar: function(req, res) {
+    actualizar: function (req, res) {
         let errores = {}
-    
+
         if (req.body.email == '') {
             errores.message = 'Completar el campo email';
             res.locals.errores = errores;
@@ -160,12 +129,13 @@ const usuarioController = {
             res.locals.errores = errores;
             return res.render('profile-edit');
 
-        
-        }else if (req.file == undefined) {
+
+        } else if (req.file == undefined) {
             errores.message = 'Completar el campo imagen';
             res.locals.errores = errores;
-            return res.render('profile-edit');}
-        
+            return res.render('profile-edit');
+        }
+
         else {
             User.findOne({
                 where: [{ email: req.body.email }]
@@ -177,19 +147,21 @@ const usuarioController = {
                         return res.render('profile-edit');
                     } else {
                         let user = {
-                            userName:req.body.usuario,
+                            userName: req.body.usuario,
                             email: req.body.email,
                             password: req.session.user.password,
                             birth_date: req.session.user.birth_date,
-                            image: req.file.image
+                            image: req.file.filename
                             
+
                         }
 
-                        req.session.user.image=user.image
 
-                        User.update(user, {where:{id:req.session.user.id}})
+                        req.session.user.image = user.image
+
+                        User.update(user, { where: { id: req.session.user.id } })
                             .then(function (userActualizado) {
-                                return res.redirect('/usuario/perfil/'+req.session.user.id)
+                                return res.redirect('/usuario/perfil/' + req.session.user.id)
                             })
                             .catch(error => console.log(error))
                     }
@@ -198,14 +170,20 @@ const usuarioController = {
         }
     },
 
-    logout: function(req,res){
+    logout: function (req, res) {
         req.session.destroy();
 
-        if(req.cookies.userId !== undefined){
+        if (req.cookies.userId !== undefined) {
             res.clearCookie('userId')
         }
 
         return res.redirect('/');
+    },
+
+    seguir: function (req, res) {
+        User.findByPk(req.session.user.id) 
+        
+        return res.render('register');
     },
 
 }
