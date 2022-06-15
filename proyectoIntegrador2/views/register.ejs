@@ -5,7 +5,11 @@
 		<%- include('partials/head') %> 
 
 	<body class="body">
-		<%- include('partials/headerDeslogueado') %> 
+		<% if (locals.user != undefined){ %> 
+			<%- include('partials/headerLogueado') %> 
+		<% }else { %> 
+			<%- include('partials/headerDeslogueado') %> 
+		<% } %>  
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">

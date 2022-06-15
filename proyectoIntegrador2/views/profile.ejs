@@ -3,7 +3,11 @@
 <%- include('partials/head') %>
 
 	<body class="body">
-		<%- include('partials/headerLogueado') %>
+		<% if (locals.user != undefined){ %> 
+			<%- include('partials/headerLogueado') %> 
+		<% }else { %> 
+			<%- include('partials/headerDeslogueado') %> 
+		<% } %>  
 
 
 			<!-- Datos del usuario -->

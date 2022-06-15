@@ -5,7 +5,11 @@
 
 <body class="body">
     <!-- Header -->
-        <%- include("partials/headerDeslogueado")%>
+	<% if (locals.user != undefined){ %> 
+		<%- include('partials/headerLogueado') %> 
+	<% }else { %> 
+		<%- include('partials/headerDeslogueado') %> 
+	<% } %>  
 
     <!-- product detail -->
     <div class="container products-wrapper">
@@ -14,11 +18,6 @@
 			<div class="usuario_producto">
 				<a href="/perfil/ <%= producto.User.id %> "> <h3 style="margin-top: 3px; font-size: 16px;">  <%= producto.User.name %></h3></a>  
 			</div>
-			<% if(locals.user != undefined) { %>
-				<p class="product-detail-description">
-					<a class="botonesusuario" href="/producto/add">Agregar producto</a>
-				</p>
-			<% } %>  
             
         </div>
         <div class="product-detail">
