@@ -15,7 +15,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="subtitulo">Agregar productos</h2>
+				<h2 class="subtitulo">Editar producto</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> <i>
@@ -24,26 +24,26 @@
 				<% } %> 
 
 
-<form class="formLogin" method="post" enctype="multipart/form-data">
+<form class="formLogin" method="POST" enctype="multipart/form-data" action="/producto/editar/<%= producto.id%>">
 
 				<div >
-					<input type="text"  placeholder="Marca" class="inputs" name="marca">
+					<input type="text"  placeholder="Marca" class="inputs" name="marca" value="<%= producto.marca %>">
 				</div>
 
 				<div >
-					<input type="text"  placeholder="Modelo" class="inputs" name="modelo">
+					<input type="text"  placeholder="Modelo" class="inputs" name="modelo" value="<%= producto.modelo %>">
 				</div>
 
 				<div >
-					<input type="text"  placeholder="Estado" class="inputs" name="estado">
+					<input type="text"  placeholder="Estado" class="inputs" name="estado" value="<%= producto.estado %>">
 				</div>
 
 				<div >
-					<input type="text"  placeholder="Color" class="inputs" name="color">
+					<input type="text"  placeholder="Color" class="inputs" name="color" value="<%= producto.color %>">
 				</div>
 
 				<div >
-					<input type="text"  placeholder="Descripcion del producto" class="inputs" name="descripcion">
+					<input type="text"  placeholder="Descripcion del producto" class="inputs" name="descripcion" value="<%= producto.descripcion %>">
 				</div>
 		
 				<div>
@@ -51,7 +51,7 @@
 			
 				</div>
 
-				<button class="botonlogin">Agregar</button>
+				<button class="botonLogin">Modificar</button>
 			</form>
 			</h2>
 

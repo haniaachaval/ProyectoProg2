@@ -14,7 +14,7 @@
     <!-- product detail -->
     <div class="container products-wrapper">
         <div class="d-flex align-items-center">
-            <h2 class="products-title"> <%= producto.marca %>   <%= producto.modelo %> </h2>
+            <h2 class="products-title"> <%= producto.marca %>  <%= producto.modelo %> </h2>
 			<div class="usuario_producto">
 				<a href="/perfil/ <%= producto.User.id %> "> <h3 style="margin-top: 3px; font-size: 16px;">  <%= producto.User.name %></h3></a>  
 			</div>
@@ -37,19 +37,28 @@
                                 <img src="https://via.placeholder.com/35" <%= producto.Comment[i].User.image %> alt="">
                                 <div class="data">
                                 <p class="user">
-                                <strong> <a href="/usuario"><%= producto.Comment[i].User.id %> <%= producto.Comment[i].User.userName  %> </a> </strong>
+                                <strong> <a href="/usuario/perfil/<%= producto.Comment[i].User.id%>"> <%= producto.Comment[i].User.userName %> </a> </strong>
                                 <%= producto.Comment[i].comments %></p>
                                 </div>
                             </article>
                         <% } %>
                     </section>
-                    <% if(locals.user != undefined) { %>
                         <form class="form" action="/comentarios/comentar/<%= producto.id %>" method="POST">
                             <input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario" >
                             <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                         </form>
-                        <% } %>
-                    }
+
+						<% if (locals.user != undefined && locals.user.id == producto.User.id) { %>
+							<form class="form" action="/producto/borrar/<%= producto.id %>" method="POST">
+								<button type="submit" class="buy-now-button">ELIMINAR PUBLICACION</button>
+							</form>
+							<form class="form" action="/producto/editar/<%= producto.id %>" method="GET">
+								<button type="submit" class="buy-now-button">EDITAR PUBLICACION</button>
+							</form>
+						<% } %>
+						
+						
+                    
                     
                 
                     <hr>

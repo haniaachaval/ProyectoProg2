@@ -17,8 +17,9 @@ const productoController = {
 
         Product.findByPk(id,{
             include: [{association: 'User'},
-                     {association: 'Comment',
-                      include: [{association: 'User'}]}]
+                    {association: 'Comment',
+                    order: [[ "createdAt" , "DESC"]],
+                    include: [{association: 'User'}]}]
         })
         .then((producto) => {
                     return res.render('producto', {
@@ -33,25 +34,70 @@ const productoController = {
 
     },
     showEdit: function (req, res) {
-        return res.render('product-add');
+        Product.findByPk(req.params.id)
+        .then(product=>{
+            return res.render('product-edit', {producto: product});
+        })
+        
     },
-    edit:function (req, res) {
-        return res.render('product-add');
-    },
-    nuevoProducto: function (req, res) {
+    edit: function (req, res) {
         let errores = { message: "" }
-        if (req.body.producto == '') {
-            errores.message = 'Completar el campo nombre';
-        }
         if (req.body.marca == '') {
             errores.message = errores.message + 'Completar el campo marca';
-
         }
         if (req.body.modelo == '') {
             errores.message = errores.message + 'Completar el campo modelo';
-
         }
+        if (req.body.estado == '') {
+            errores.message = errores.message + 'Completar el campo estado';
+        }
+        if (req.body.color == '') {
+            errores.message = errores.message + 'Completar el campo color';
+        }
+        if (req.body.descripcion == '') {
+            errores.message = errores.message + 'Completar la descripcion del producto';
+        }
+        if (errores.message.length > 0) {
+            res.locals.errores = errores;
+            return res.render('product-edit');
+        }
+        if (req.file == undefined) {
+            Product.update( { 
+                marca: req.body.marca,
+                modelo:req.body.modelo,
+                estado:req.body.estado,
+                color:req.body.color,
+                descripcion: req.body.descripcion
+            }, {where: {id: req.params.id}})
+    
+        .then(function (producto) {
+            return res.redirect('/producto')
+        })
+        .catch(error => console.log(error))   
+    } else {
+        Product.update ({
+            marca: req.body.marca,
+            modelo:req.body.modelo,
+            estado:req.body.estado,
+            color:req.body.color,
+            descripcion: req.body.descripcion, 
+            image: req.file.filename}
+        }, {where: {id: req.params.id}})
 
+        .then(function (producto) {
+            return res.redirect('/producto')
+        })
+        .catch(error => console.log(error))   
+    }
+},
+    nuevoProducto: function (req, res) {
+        let errores = { message: '' }
+        if (req.body.marca == '') {
+            errores.message = errores.message + 'Completar el campo marca';
+        }
+        if (req.body.modelo == '') {
+            errores.message = errores.message + 'Completar el campo modelo';
+        }
         if (req.body.estado == '') {
             errores.message = errores.message + 'Completar el campo estado';
         }
@@ -67,9 +113,7 @@ const productoController = {
 
         if (req.file == undefined) {
             errores.message = errores.message + 'Agregar imagen';
-
         }
-
 
         if (errores.message.length > 0) {
             res.locals.errores = errores;
@@ -92,7 +136,14 @@ const productoController = {
                 return res.redirect('/producto')
             })
             .catch(error => console.log(error))   
-}
+},
+    borrar: function(req, res){
+        Product.destroy({ where: {id: req.params.id}})
+        .then(response =>{
+            return res.redirect('/')
+        })
+        .catch(error => console.log(error))  
+    }
 
 }
 

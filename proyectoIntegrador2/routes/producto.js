@@ -25,11 +25,11 @@ router.get ('/', productoController.detalleProducto );
 router.get ('/:idProducto', productoController.detalleProducto );
 
 //editar producto
-router.get ('/productEdit', productoController.showEdit);
-router.post('/productEdit', productoController.edit);
+router.get ('/editar/:id', productoController.showEdit);
+router.post('/editar/:id', productoController.edit);
 
 //eliminar producto
-
+router.post('/borrar/:id', productoController.borrar);
 
 //exportamos el contenido del router para hacerlo visible y poder requerirlo en los otros archivos
 module.exports = router 
