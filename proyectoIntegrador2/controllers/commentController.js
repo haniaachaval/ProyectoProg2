@@ -8,7 +8,7 @@ const commentController = {
         let nuevoComment = {
             product_id: req.params.id,
             user_id: req.session.user.id,
-            comments: req.body.comentario,
+            comentario: req.body.comentario,
         }
 
         Comment.create(nuevoComment)

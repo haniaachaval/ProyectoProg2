@@ -32,19 +32,19 @@
                 </article>
                 <div class="col-12 col-lg-4">
 					<section class="comments">
-                        <% for( let i = 0; i < comentarios.length; i++ ) { %>
+                        <% for( let i = 0; i < producto.Comment.length; i++ ) { %>
                             <article>
-                                <img src="https://via.placeholder.com/35" <%= comentarios[i].User.image %> alt="">
+                                <img src="https://via.placeholder.com/35" <%= producto.Comment[i].User.image %> alt="">
                                 <div class="data">
                                 <p class="user">
-                                <strong> <a href="/usuario"><%= comentarios[i].User.id %> <%= comentarios[i].User.userName  %> </a> </strong>
-                                <%= comentarios[i].comments %></p>
+                                <strong> <a href="/usuario"><%= producto[i].User.id %> <%= producto[i].User.userName  %> </a> </strong>
+                                <%= producto[i].Comment.comments %></p>
                                 </div>
                             </article>
                         <% } %>
                     </section>
                     <% if(locals.user != undefined) { %>
-                        <form class="form" action="/<%= producto.id %>/comentar" method="POST">
+                        <form class="form" action="/comentarios/comentar/<%= producto.id %>" method="POST">
                             <input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario" >
                             <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                         </form>

@@ -62,11 +62,13 @@ app.use(function (req, res, next) {
 const indexRouter = require('./routes/index');
 const productoRouter = require('./routes/producto');
 const usuarioRouter = require('./routes/usuario');
+const  comentariosRouter = require('./routes/comentarios');
 
 //estos son los prefijos
 app.use('/', indexRouter);
 app.use('/producto', productoRouter);
 app.use('/usuario', usuarioRouter);
+app.use('/comentarios', comentariosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

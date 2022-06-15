@@ -16,21 +16,15 @@ const productoController = {
         var id = req.params.idProducto
 
         Product.findByPk(id,{
-            include: [{association: 'User'}]
+            include: [{association: 'User'},
+                     {association: 'Comment',
+                      include: [{association: 'User'}]}]
         })
         .then((producto) => {
-            console.log(producto)
-            db.Comment.findAll({
-                where: { id: id },
-                include: [{ association: 'User' }]
-            })
-                .then((comentarios) => { //promesa anidada
-                    console.log(comentarios)
+          return res.send(producto)
                     return res.render('producto', {
                         producto: producto,
-                        comentarios: comentarios
                     });
-                })
         })
         .catch((error) => {
             console.log(error)
