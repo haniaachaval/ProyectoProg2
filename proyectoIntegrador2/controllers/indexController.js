@@ -4,7 +4,14 @@ const {op} = require ("sequelize");
 
 const indexController = {
     home : function(req,res){
-        return res.render ('index',{celus: db.Product })
+        db.Product.findAll({
+            order: [[ "createdAt" , "DESC"]]
+        })
+        .then((result) => {
+            return res.render('index', {celus : result})
+        }).catch((err) => {
+            
+        });
     },
     resultados : function(req, res){
         let search = req.query.search
