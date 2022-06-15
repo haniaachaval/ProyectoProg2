@@ -4,7 +4,7 @@ const Comment = db.Comment;
 
 const productoController = {
     agregarProducto: function (req, res) {
-        if(res.session.user != undefined ){
+        if(req.session.user != undefined ){
             return res.render('product-add', { usuarios: [] });
         } else {
             return res.redirect('/usuario/registro')
