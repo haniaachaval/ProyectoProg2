@@ -10,9 +10,9 @@
     <!-- product detail -->
     <div class="container products-wrapper">
         <div class="d-flex align-items-center">
-            <h2 class="products-title"><%= producto.marca %></h2>
+            <h2 class="products-title"> <%= producto.marca %>   <%= producto.modelo %> </h2>
 			<div class="usuario_producto">
-				<a href="/perfil/ <%= producto.User.id %> "> <h3 style="margin-top: 3px; font-size: 16px;"> By <%= producto.User.name %></h3></a>  
+				<a href="/perfil/ <%= producto.User.id %> "> <h3 style="margin-top: 3px; font-size: 16px;">  <%= producto.User.name %></h3></a>  
 			</div>
 			<% if(locals.user != undefined) { %>
 				<p class="product-detail-description">
@@ -25,8 +25,10 @@
             <div class="row">
                 <article class="col-12 col-lg-8 product-detail-info">
                     <img src="/images/<%= producto.image %>" alt="" class="product-detail-img">
-                    <p class="product-detail-description"> <%= producto.descripcion %> </p>
-					<p class="product-detail-description"> <%= producto.User.userName %> </p>
+                    <p class="product-detail-description"> Descripcion del producto: <%= producto.descripcion %> </p>
+					<p class="product-detail-description"> Estado del producto: <%= producto.estado %> </p>
+					<p class="product-detail-description"> Propietario: <%= producto.User.userName %> </p>
+					<p class="product-detail-description"> Ante cualquier consulta: <%= producto.User.email %> </p>
 					
                 </article>
                 <div class="col-12 col-lg-4">
