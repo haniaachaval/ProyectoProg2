@@ -5,5 +5,5 @@ const comentController = require ('../controllers/commentController');
 
 
 //comentarios
-router.post('/:idComentar', comentController.comentarios);
+router.post('/:id/Comentar', comentController.comentarios);
 router.get('/', comentController.comentario);
