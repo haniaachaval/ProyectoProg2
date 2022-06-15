@@ -2,8 +2,6 @@ const db = require("../database/models");
 const Product = db.Product;
 const Comment = db.Comment;
 
-
-
 const productoController = {
     agregarProducto: function (req, res) {
         return res.render('product-add', { usuarios: [] });
@@ -15,20 +13,30 @@ const productoController = {
         console.log(id)
 
         Product.findByPk(id,{
-            include: [{association: 'User'}, {association: 'Comment', include: [{association: 'User'}]}]
+            include: [{association: 'User'}]
         })
         .then((producto) => {
             console.log(producto)
-            return res.render('producto',{
-                productos : producto,
-                comentarios: [],
-            });
+            db.Comment.findAll({
+                where: { producto_id: producto.id },
+                include: [{ association: 'User' }]
+            })
+                .then((comentarios) => { //promesa anidada
+                    console.log(comentarios)
+                    return res.render('producto', {
+                        producto: producto,
+                        comentarios: comentarios
+                    });
+                })
         })
-    .catch((error) => {
-        console.log(error)
-        return res.send(error);
-    })
+        .catch((error) => {
+            console.log(error)
+            return res.send(error);
+            
+        })
+
     },
+
     comentarios: function (req, res) {
 
         let nuevoComment = {
@@ -47,7 +55,15 @@ const productoController = {
             return res.send(error);
         })
     },
-
+    comentario: function (req, res) {
+        return res.render('product-add');
+    },
+    showEdit: function (req, res) {
+        return res.render('product-add');
+    },
+    edit:function (req, res) {
+        return res.render('product-add');
+    },
     nuevoProducto: function (req, res) {
         let errores = { message: "" }
         if (req.body.producto == '') {
@@ -86,8 +102,8 @@ const productoController = {
             return res.render('product-add');
         }
 
-        Product.create (
-            {
+
+            let producto = {
                 marca: req.body.marca,
                 modelo:req.body.modelo,
                 estado:req.body.estado,
@@ -95,18 +111,15 @@ const productoController = {
                 image: req.file.filename,
                 descripcion: req.body.descripcion,
                 user_id: req.session.user.id 
-            })
+            }
+            Product.create (producto)
 
-            .then(function (productoGuardado) {
+            .then(function (producto) {
                 return res.redirect('/producto')
             })
-            .catch(error => console.log(error))
-
-
-
-    
-    
+            .catch(error => console.log(error))   
 }
+
 }
 
 module.exports = productoController

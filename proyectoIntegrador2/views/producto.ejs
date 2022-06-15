@@ -10,7 +10,10 @@
     <!-- product detail -->
     <div class="container products-wrapper">
         <div class="d-flex align-items-center">
-            <h2 class="products-title"><%- productos.marca %></h2>
+            <h2 class="products-title"><%= producto.marca %></h2>
+			<div class="usuario_producto">
+				<a href="/perfil/ <%= producto.User.id %> "> <h3 style="margin-top: 3px; font-size: 16px;"> By <%= producto.User.name %></h3></a>  
+			</div>
             <p class="product-detail-description">
                 <a class="botonesusuario" href="/producto/add">Agregar producto</a>
             </p>
@@ -18,19 +21,19 @@
         <div class="product-detail">
             <div class="row">
                 <article class="col-12 col-lg-8 product-detail-info">
-                    <img src="/images/<%= productos.image %>" alt="" class="product-detail-img">
-                    <p class="product-detail-description"> <%- productos.descripcion %> </p>
-					<p class="product-detail-description"> <%- productos.User.userName %> </p>
+                    <img src="/images/<%= producto.image %>" alt="" class="product-detail-img">
+                    <p class="product-detail-description"> <%= producto.descripcion %> </p>
+					<p class="product-detail-description"> <%= producto.User.userName %> </p>
 					
                 </article>
                 <div class="col-12 col-lg-4">
 					<section class="comments">
                         <% for( let i = 0; i < comentarios.length; i++ ) { %>
                             <article>
-                                <img src="https://via.placeholder.com/35" <%= comentarios[i].user.image %> alt="">
+                                <img src="https://via.placeholder.com/35" <%= comentarios[i].User.image %> alt="">
                                 <div class="data">
                                 <p class="user">
-                                <strong> <a href="/usuario"><%= comentarios[i].user.id %> <%- comentarios[i].user.userName  %> </a> </strong>
+                                <strong> <a href="/usuario"><%= comentarios[i].User.id %> <%= comentarios[i].User.userName  %> </a> </strong>
                                 <%= comentarios[i].comments %></p>
                                 </div>
                             </article>

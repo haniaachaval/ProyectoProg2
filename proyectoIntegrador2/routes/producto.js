@@ -20,9 +20,19 @@ const storage = multer.diskStorage({
 
 router.get ('/add', productoController.agregarProducto );
 router.post ('/add', upload.single("imagen"), productoController.nuevoProducto);
-router.post('/:id/comentar', productoController.comentarios);
+
 router.get ('/', productoController.detalleProducto );
 router.get ('/:idProducto', productoController.detalleProducto );
+
+//comentarios
+router.post('/:idComentar', productoController.comentarios);
+router.get('/', productoController.comentario);
+
+//editar producto
+router.get ('/productEdit', productoController.showEdit);
+router.post('/productEdit', productoController.edit);
+
+//eliminar producto
 
 
 //exportamos el contenido del router para hacerlo visible y poder requerirlo en los otros archivos
