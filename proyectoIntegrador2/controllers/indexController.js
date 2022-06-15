@@ -14,19 +14,21 @@ const indexController = {
         });
     },
     resultados : function(req, res){
-        let search = req.query.search
+        let search = req.query.search;
         db.Product.findAll({
-            where : [{name: {[op.like]: "%" + search + "%"}}]
+            where : [{name: {[op.like]: "%" + search + "%"}},
+            {descripcion: {[op.like]: "%" + search + "%"}}]
         })
         .then((data) => {
-            return res.render ("search-results", {
-                product: data,
-            })
+            if (search != data) {
+                return res.render('search-results', { product: data})
+            } else {
+                res.send('no se encontraron resultados')
+            }})
             .catch((error) => {
                 return res.send(error);
             })
-        })
-    },
+        },
     resultados: function(req,res){
         return res.render('search-results')
     },

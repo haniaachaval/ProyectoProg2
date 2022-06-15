@@ -10,24 +10,19 @@ const productoController = {
     detalleProducto: function (req, res) {
         console.log(req.params);
         var id = req.params.idProducto
-        console.log(id)
+
 
         Product.findByPk(id,{
-            include: [{association: 'User'}]
+            include: [{association: 'User'},
+                     {association: 'Comment',
+                      include:[ {association: 'User'}]
+                    }]
         })
         .then((producto) => {
-            console.log(producto)
-            db.Comment.findAll({
-                where: { producto_id: producto.id },
-                include: [{ association: 'User' }]
-            })
-                .then((comentarios) => { //promesa anidada
-                    console.log(comentarios)
                     return res.render('producto', {
                         producto: producto,
                         comentarios: comentarios
                     });
-                })
         })
         .catch((error) => {
             console.log(error)
@@ -35,28 +30,6 @@ const productoController = {
             
         })
 
-    },
-
-    comentarios: function (req, res) {
-
-        let nuevoComment = {
-            product_id: req.params.id,
-            user_id: req.session.user.id,
-            comments: req.body.comentario,
-        }
-
-        Comment.create(nuevoComment)
-
-        .then(()=>{
-            return res.redirect ('producto')
-        })
-
-        .catch((error) => {
-            return res.send(error);
-        })
-    },
-    comentario: function (req, res) {
-        return res.render('product-add');
     },
     showEdit: function (req, res) {
         return res.render('product-add');

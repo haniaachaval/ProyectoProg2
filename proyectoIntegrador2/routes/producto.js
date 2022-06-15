@@ -24,10 +24,6 @@ router.post ('/add', upload.single("imagen"), productoController.nuevoProducto);
 router.get ('/', productoController.detalleProducto );
 router.get ('/:idProducto', productoController.detalleProducto );
 
-//comentarios
-router.post('/:idComentar', productoController.comentarios);
-router.get('/', productoController.comentario);
-
 //editar producto
 router.get ('/productEdit', productoController.showEdit);
 router.post('/productEdit', productoController.edit);
