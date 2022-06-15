@@ -1,6 +1,6 @@
 const db = require("../database/models")
 const celular = require("../db/celulares")
-const {op} = require ("sequelize");
+const op = db.Sequelize.Op;
 
 const indexController = {
     home : function(req,res){
