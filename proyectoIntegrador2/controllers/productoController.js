@@ -21,7 +21,6 @@ const productoController = {
                       include: [{association: 'User'}]}]
         })
         .then((producto) => {
-          return res.send(producto)
                     return res.render('producto', {
                         producto: producto,
                     });

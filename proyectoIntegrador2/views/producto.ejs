@@ -37,8 +37,8 @@
                                 <img src="https://via.placeholder.com/35" <%= producto.Comment[i].User.image %> alt="">
                                 <div class="data">
                                 <p class="user">
-                                <strong> <a href="/usuario"><%= producto[i].User.id %> <%= producto[i].User.userName  %> </a> </strong>
-                                <%= producto[i].Comment.comments %></p>
+                                <strong> <a href="/usuario"><%= producto.Comment[i].User.id %> <%= producto.Comment[i].User.userName  %> </a> </strong>
+                                <%= producto.Comment[i].comments %></p>
                                 </div>
                             </article>
                         <% } %>
