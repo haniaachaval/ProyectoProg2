@@ -1,6 +1,5 @@
 const db = require("../database/models");
 const Product = db.Product;
-const Comment = db.Comment;
 
 const productoController = {
     agregarProducto: function (req, res) {
