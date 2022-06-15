@@ -18,7 +18,7 @@ module.exports = function (sequelize, dataTypes){
             type:dataTypes.INTEGER
         },
         
-       /* created_at:{
+    /* created_at:{
             type:dataTypes.DATE
         },
         updated_at:{
