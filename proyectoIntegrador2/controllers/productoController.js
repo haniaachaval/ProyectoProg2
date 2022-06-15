@@ -75,14 +75,14 @@ const productoController = {
         })
         .catch(error => console.log(error))   
     } else {
-        Product.update ({
+            let producto =  {
             marca: req.body.marca,
             modelo:req.body.modelo,
             estado:req.body.estado,
             color:req.body.color,
-            descripcion: req.body.descripcion, 
-            image: req.file.filename}
-        }, {where: {id: req.params.id}})
+            descripcion: req.body.descripcion
+        }
+        Product.update ({producto: producto}, {where: {id: req.params.id}})
 
         .then(function (producto) {
             return res.redirect('/producto')
