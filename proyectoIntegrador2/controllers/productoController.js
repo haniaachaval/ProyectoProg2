@@ -4,7 +4,12 @@ const Comment = db.Comment;
 
 const productoController = {
     agregarProducto: function (req, res) {
-        return res.render('product-add', { usuarios: [] });
+        if(res.session.user != undefined ){
+            return res.render('product-add', { usuarios: [] });
+        } else {
+            return res.redirect('/usuario/registro')
+        }
+        
     },
 
     detalleProducto: function (req, res) {

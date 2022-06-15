@@ -14,9 +14,12 @@
 			<div class="usuario_producto">
 				<a href="/perfil/ <%= producto.User.id %> "> <h3 style="margin-top: 3px; font-size: 16px;"> By <%= producto.User.name %></h3></a>  
 			</div>
-            <p class="product-detail-description">
-                <a class="botonesusuario" href="/producto/add">Agregar producto</a>
-            </p>
+			<% if(locals.user != undefined) { %>
+				<p class="product-detail-description">
+					<a class="botonesusuario" href="/producto/add">Agregar producto</a>
+				</p>
+			<% } %>  
+            
         </div>
         <div class="product-detail">
             <div class="row">
@@ -40,7 +43,7 @@
                         <% } %>
                     </section>
                     <% if(locals.user != undefined) { %>
-                        <form class="form" action="/<%= productos.id %>/comentar" method="POST">
+                        <form class="form" action="/<%= producto.id %>comentar" method="POST">
                             <input class="form-input" type="text" value="" placeholder="Agregar comentario" name="comentario" >
                             <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                         </form>
