@@ -4,7 +4,8 @@ const op = db.Sequelize.Op;
 const indexController = {
     home : function(req,res){
         db.Product.findAll({
-            order: [[ "createdAt" , "DESC"]]
+            order: [[ "createdAt" , "DESC"]],
+            include : [{association: "User"}]
         })
         .then((result) => {
             return res.render('index', {celus : result})
