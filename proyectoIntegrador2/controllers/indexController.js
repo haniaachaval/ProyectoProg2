@@ -5,6 +5,7 @@ const indexController = {
     home : function(req,res){
         db.Product.findAll({
             order: [[ "createdAt" , "DESC"]],
+            limit : 10,
             include : [{association: "User"}]
         })
         .then((result) => {
@@ -15,7 +16,6 @@ const indexController = {
     },
     resultados : function(req, res){
         let search = req.query.search;
-        console.log("holaaaa")
         db.Product.findAll({
             where : {
                 [op.or]:[
@@ -27,6 +27,7 @@ const indexController = {
             include: [{association: 'User'}]
         })
         .then((data) => {
+            console.log(data)
                 return res.render('search-results', { products: data})
             })
             .catch((error) => {

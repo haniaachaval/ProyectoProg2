@@ -26,7 +26,7 @@
                     <img src="/images/<%= producto.image %>" alt="" class="product-detail-img">
                     <p class="product-detail-description"> Descripcion del producto: <%= producto.descripcion %> </p>
 					<p class="product-detail-description"> Estado del producto: <%= producto.estado %> </p>
-					<p class="product-detail-description"> Propietario: <%= producto.User.userName %> </p>
+					<p class="product-detail-description"> Propietario: <a href="/usuario/perfil/<%= producto.User.id %> "><%= producto.User.userName %></a> </p>
 					<p class="product-detail-description"> Ante cualquier consulta: <%= producto.User.email %> </p>
 					
                 </article>

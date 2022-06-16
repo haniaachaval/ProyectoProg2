@@ -9,7 +9,6 @@
 			<%- include('partials/headerDeslogueado') %> 
 		<% } %>  
 
-
 			<!-- Datos del usuario -->
 			<section class="info-usuario container products-wrapper">
 				<div class="row">
@@ -20,15 +19,14 @@
 						<div class="d-flex align-items-center ">
 							<h1 class="tituloPerfil">
 								<%=data.userName%>
-									<%if(data.id==user.id){%>
-										<a href="/usuario/editar">
-											<i class="editarPerfil">Editar perfil</i>
-										</a>
-										<%}%>
 							</h1>
-							<%if(data.id != user.id){%>
+							<%if(locals.user != undefined && data.id==locals.user.id){%>
+								<a href="/usuario/editar">
+									<i class="editarPerfil">Editar perfil</i>
+								</a>
+							<%} else if (locals.user != undefined && data.id != locals.user.id){%>
 								<a class="btn mt-3 ml-4" href="/usuario/seguir/<%=data.id%>">SEGUIR</a>
-								<%}%>
+							<%}%>
 
 						</div>
 						<div class="d-flex align-items-center ">

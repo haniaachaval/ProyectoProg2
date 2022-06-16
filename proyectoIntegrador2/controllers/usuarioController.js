@@ -56,7 +56,7 @@ const usuarioController = {
                             email: req.body.email,
                             password: bcrypt.hashSync(req.body.password, 10),
                             birth_date: req.body.cumple,
-                            image: req.file.image,
+                            image: req.file.filename,
                         }
 
                         User.create(user)
