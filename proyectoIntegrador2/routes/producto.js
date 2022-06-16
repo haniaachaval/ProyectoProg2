@@ -26,7 +26,7 @@ router.get ('/:idProducto', productoController.detalleProducto );
 
 //editar producto
 router.get ('/editar/:id', productoController.showEdit);
-router.post('/editar/:id', productoController.edit);
+router.post('/editar', upload.single("imagen"), productoController.edit);
 
 //eliminar producto
 router.post('/borrar/:id', productoController.borrar);

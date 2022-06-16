@@ -61,34 +61,22 @@ const productoController = {
             res.locals.errores = errores;
             return res.render('product-edit');
         }
-        if (req.file == undefined) {
-            Product.update( { 
-                marca: req.body.marca,
-                modelo:req.body.modelo,
-                estado:req.body.estado,
-                color:req.body.color,
-                descripcion: req.body.descripcion
-            }, {where: {id: req.params.id}})
-    
-        .then(function (producto) {
-            return res.redirect('/producto')
-        })
-        .catch(error => console.log(error))   
-    } else {
+        else {
             let producto =  {
             marca: req.body.marca,
             modelo:req.body.modelo,
             estado:req.body.estado,
             color:req.body.color,
-            descripcion: req.body.descripcion
+            imagen: req.file.filename,
+            descripcion: req.body.descripcion,
+            user_id: req.session.user.id 
         }
-        Product.update ({producto: producto}, {where: {id: req.params.id}})
-
+        Product.update (producto, {where: {id: req.params.id}})
         .then(function (producto) {
-            return res.redirect('/producto')
-        })
-        .catch(error => console.log(error))   
-    }
+        return res.redirect(`/producto/${producto.id}`)
+    })
+    .catch(error => console.log(error))   
+}
 },
     nuevoProducto: function (req, res) {
         let errores = { message: '' }
