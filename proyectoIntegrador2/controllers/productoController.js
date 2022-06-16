@@ -67,10 +67,11 @@ const productoController = {
             modelo:req.body.modelo,
             estado:req.body.estado,
             color:req.body.color,
-            imagen: req.file.filename,
+            //imagen: req.file.filename,
             descripcion: req.body.descripcion,
             user_id: req.session.user.id 
         }
+        return res.send(producto)
         Product.update (producto, {where: {id: req.params.id}})
         .then(function (producto) {
         return res.redirect(`/producto/${producto.id}`)
@@ -121,7 +122,7 @@ const productoController = {
             Product.create (producto)
 
             .then(function (producto) {
-                return res.redirect('/producto')
+                return res.redirect(`/producto/${producto.id}`)
             })
             .catch(error => console.log(error))   
 },
