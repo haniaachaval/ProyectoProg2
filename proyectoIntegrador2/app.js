@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const User = require('./database/models').User
 
 const app = express();
 
@@ -45,16 +46,19 @@ app.use(function (req, res, next) {
 });
 
 app.use(function (req, res, next) {
-  if (req.cookies.UserId != undefined && req.session.user == undefined) {
-    let userId= req.cookies.userId;
-    User.findByPk(userId)
+  if (req.cookies.userId != undefined && req.session.user == undefined) {
+    let user= req.cookies.userId;
+    User.findByPk(user)
       .then(function (user) {
         req.session.user = user
         res.locals.user = user
+
+        return next();
       })
       .catch()
+  } else {
+    return next(); 
   }
-  return next();
 })
 
 
