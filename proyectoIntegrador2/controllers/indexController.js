@@ -15,23 +15,24 @@ const indexController = {
     },
     resultados : function(req, res){
         let search = req.query.search;
+        console.log("holaaaa")
         db.Product.findAll({
-            where : [{name: {[op.like]: "%" + search + "%"}},
-            {descripcion: {[op.like]: "%" + search + "%"}}]
+            where : {
+                [op.or]:[
+                    {marca: {[op.like]: "%" + search + "%"}},
+                    {modelo: {[op.like]: "%" + search + "%"}},
+                    {descripcion: {[op.like]: "%" + search + "%"}}
+                ]
+            },
+            include: [{association: 'User'}]
         })
         .then((data) => {
-            if (search != data) {
-                return res.render('search-results', { product: data})
-            } else {
-                res.send('no se encontraron resultados')
-            }})
+                return res.render('search-results', { products: data})
+            })
             .catch((error) => {
                 return res.send(error);
             })
         },
-    resultados: function(req,res){
-        return res.render('search-results')
-    },
 }
 
 module.exports = indexController
