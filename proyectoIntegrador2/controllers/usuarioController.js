@@ -1,6 +1,7 @@
 //const usuarios = require("../db/usuario");
 const db = require("../database/models");
 const User = db.User
+const Follower = db.Follower
 const bcrypt = require('bcryptjs');
 
 
@@ -18,7 +19,18 @@ const usuarioController = {
             ]
         })
         .then(data => {
-                return res.render('profile', { data: data })
+
+            let siguiendo = false 
+
+            for (let i=0; i<data.Followers.length; i++ )
+            {
+                
+               if(req.session.user.id == data.Followers[i].id){
+                    siguiendo = true 
+                }
+            }
+
+            return res.render('profile', { data: data, siguiendo: siguiendo })
             })
 
     },
@@ -181,9 +193,26 @@ const usuarioController = {
     },
 
     seguir: function (req, res) {
-        User.findByPk(req.session.user.id) 
+        Follower.create({
+            seguidor_id: req.session.user.id,
+            seguido_id: req.params.id
+        }) 
+
+        .then(()=> res.redirect('/usuario/perfil/'+req.params.id))
+
+        .catch(errors => console.log(errors))
         
-        return res.render('register');
+    },
+
+    dejar_seguir: function (req, res) {
+        Follower.destroy({
+            where: { seguidor_id: req.session.user.id, seguido_id: req.params.id }
+           
+        }) 
+
+        .then(()=> res.redirect('/usuario/perfil/'+req.params.id))
+
+        .catch(errors => console.log(errors))
     },
 
 }

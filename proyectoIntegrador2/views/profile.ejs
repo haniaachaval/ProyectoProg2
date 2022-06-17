@@ -20,12 +20,18 @@
 							<h1 class="tituloPerfil">
 								<%=data.userName%>
 							</h1>
-							<%if(locals.user != undefined && data.id==locals.user.id){%>
-								<a href="/usuario/editar">
-									<i class="editarPerfil">Editar perfil</i>
-								</a>
-							<%} else if (locals.user != undefined && data.id != locals.user.id){%>
-								<a class="btn mt-3 ml-4" href="/usuario/seguir/<%=data.id%>">SEGUIR</a>
+							<%if(locals.user != undefined){%>
+
+								<%if(data.id==locals.user.id){%>
+									<a href="/usuario/editar">
+										<i class="editarPerfil">Editar perfil</i>
+									</a>
+								<%} else if (data.id != locals.user.id && !siguiendo){%>
+									<a class="btn mt-3 ml-4" href="/usuario/seguir/<%=data.id%>">SEGUIR</a>
+								
+								<%} else if (siguiendo){%>
+									<a class="btn mt-3 ml-4" href="/usuario/dejar_seguir/<%=data.id%>"> DEJAR DE SEGUIR</a>
+								<%}%>
 							<%}%>
 
 						</div>

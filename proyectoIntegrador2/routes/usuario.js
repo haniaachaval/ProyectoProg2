@@ -26,6 +26,7 @@ router.get('/editar', usuarioController.editarUsuario);
 router.post('/editar', upload.single("foto"), usuarioController.actualizar);
 router.post('/logout', usuarioController.logout);
 router.get('/seguir/:id', usuarioController.seguir);
+router.get('/dejar_seguir/:id', usuarioController.dejar_seguir);
 
 
 
