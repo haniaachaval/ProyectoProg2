@@ -1,0 +1,55 @@
+CREATE SCHEMA db;
+
+USE db;
+
+CREATE TABLE users (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    userName VARCHAR (45),
+    email VARCHAR (150) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    birth_date DATE,
+    image VARCHAR (100),
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleatedAt DATETIME
+);
+INSERT INTO users
+VALUES
+( DEFAULT, 'Haniachaval', 'hachaval@udesa.com', 'Hania123', '2002-21-12', '2002-05-05','2002-05-05', null ),
+( DEFAULT, 'CandediChiara', 'cdichiara@udesa.com', 'Cande123', '2002-03-06', '2002-05-05','2002-05-05', null ),
+( DEFAULT, 'TiziSordini', 'Tzordini@udesa.com', 'Tizi123', '2002-06-12', '2002-05-05','2002-05-05', null );
+
+CREATE TABLE products (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    marca VARCHAR (100) NOT NULL,
+    modelo VARCHAR (450) NOT NULL,
+    estado VARCHAR (100) NOT NULL,
+    color VARCHAR (100) NOT NULL,
+    image varchar (100) NOT NULL, 
+    user_id INT,
+    descripcion VARCHAR (300) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleatedAt DATETIME
+);
+
+CREATE TABLE comments (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    comments VARCHAR (450),
+    product_id INT,
+    user_id INT,
+	FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE CASCADE,
+	FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	deleatedAt DATETIME
+);
+
+CREATE TABLE followers (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    seguidor_id INT,
+    seguido_id INT,
+    FOREIGN KEY (seguido_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (seguidor_id) REFERENCES users (id) ON DELETE CASCADE
+);

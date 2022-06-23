@@ -30,13 +30,6 @@ app.use(session(
     saveUninitialized: true
   }
 ));
-//creo variable que contiene mis usuarios
-
-/*app.use(function(req,res,next){
-  res.locals.usuario = {
-    usuario: req.session.Users.userName}
-  return next();
-})*/
 //header logueado y deslogueado
 app.use(function (req, res, next) {
   if (req.session.user != undefined) {

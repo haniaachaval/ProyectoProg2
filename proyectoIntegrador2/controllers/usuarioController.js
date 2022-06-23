@@ -10,7 +10,7 @@ const usuarioController = {
     usuario: function (req, res) {
 
         let userId = req.params.id
-
+        
         User.findByPk(userId, {
             include: [
                 { association: 'Product' },
@@ -88,8 +88,6 @@ const usuarioController = {
     },
 
     signIn: function (req, res) {
-
-
         let error = {}
 
         User.findOne({
@@ -116,12 +114,9 @@ const usuarioController = {
                     res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100 })
                 }
 
-
-
                 return res.redirect('/')
 
             })
-
             .catch(errors => console.log(errors))
     },
 
