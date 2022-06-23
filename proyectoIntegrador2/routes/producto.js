@@ -22,11 +22,11 @@ router.get ('/add', productoController.agregarProducto );
 router.post ('/add', upload.single("imagen"), productoController.nuevoProducto);
 
 router.get ('/', productoController.detalleProducto );
-router.get ('/:idProducto', productoController.detalleProducto );
+router.get ('/:id', productoController.detalleProducto );
 
 //editar producto
 router.get ('/editar/:id', productoController.showEdit);
-router.post('/editar', upload.single("imagen"), productoController.edit);
+router.post('/editar/:id', upload.single("imagen"), productoController.edit);
 
 //eliminar producto
 router.post('/borrar/:id', productoController.borrar);

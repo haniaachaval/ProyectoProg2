@@ -13,7 +13,7 @@ const productoController = {
 
     detalleProducto: function (req, res) {
         console.log(req.params);
-        var id = req.params.idProducto
+        var id = req.params.id
 
         Product.findByPk(id,{
             include: [{association: 'User'},
@@ -71,10 +71,9 @@ const productoController = {
             descripcion: req.body.descripcion,
             user_id: req.session.user.id 
         }
-        return res.send(producto)
         Product.update (producto, {where: {id: req.params.id}})
         .then(function (producto) {
-        return res.redirect(`/producto/${producto.id}`)
+        return res.redirect('/producto/' + req.params.id)
     })
     .catch(error => console.log(error))   
 }
